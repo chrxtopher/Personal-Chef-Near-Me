@@ -8,8 +8,12 @@ const Home = () => {
         <video src={videoBg} autoPlay loop muted />
         <div className="title-cover"></div>
         <div className="title-content">
-          <h1>Your Personal Chef of Phoenix, AZ</h1>
-          <p>Bringing the delicacies of the kitchen to your home and table</p>
+          <h1>Christopher Smith - Personal Chef</h1>
+          <p>
+            An accomplished and fervent chef, proudly rooted in Phoenix, AZ,
+            dedicated to delivering culinary excellence straight to your home
+            and table.
+          </p>
         </div>
       </section>
     </div>

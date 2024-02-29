@@ -9,8 +9,17 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+:root {
+  --primary-dark: #1c1c1c;
+  --primary-mid: #828282;
+  --primary-light: #fff5ee;
+  --primary-accent: #f8971c;
+
+}
+
 body {
-  background-color: tan;
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
 }
 
 code {

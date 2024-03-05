@@ -8,7 +8,7 @@ const Home = () => {
       <PageTitleVideo
         asset={videoBg}
         title={"Christopher Smith - Personal Chef"}
-        description={
+        subTitle={
           "An accomplished and fervent chef, proudly rooted in Phoenix, AZ, dedicated to delivering culinary excellence straight to your home and table."
         }
       />

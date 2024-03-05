@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
-import pcnmLogo from "../resources/photos/PCNM_LOGO.png";
+import pcnmLogo from "../assets/photos/PCNM_LOGO.png";
 import "../styles/navbar.css";
 
 const NavBar = () => {

@@ -1,6 +1,6 @@
 import React from "react";
 import PageTitleVideo from "../components/PageTitleVideo";
-import videoBg from "../resources/videos/cooking-bg.mp4";
+import videoBg from "../assets/videos/cooking-bg.mp4";
 
 const Home = () => {
   return (

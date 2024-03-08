@@ -19,6 +19,7 @@
 }
 
 .title-content {
+  margin: auto;
   position: absolute;
   top: 0;
   width: 100%;
@@ -34,6 +35,18 @@
 }
 
 .title-content p {
-  font-size: 1.75rem;
+  font-size: 1.6rem;
   font-weight: 150;
+  max-width: 1000px;
+}
+
+.title-content h1 {
+  max-width: 1000px;
+  margin-bottom: 12px;
+}
+
+.title-content hr {
+  width: 60%;
+  min-width: 800px;
+  margin: 10px 0px;
 }

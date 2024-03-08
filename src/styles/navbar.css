@@ -6,7 +6,7 @@ nav {
   justify-content: space-between;
   width: 100vw;
   height: 10vh;
-  padding: 20px 80px;
+  padding: 5px 80px;
   border-bottom: 1px solid var(--primary-dark);
   background-color: var(--primary-light);
   z-index: 100;
@@ -17,8 +17,7 @@ nav {
   align-items: center;
   justify-content: space-around;
   width: 500px;
-  height: 120px;
-  gap: 10px;
+  height: 100%;
 }
 
 .nav-logo h1 {
@@ -26,8 +25,8 @@ nav {
 }
 
 .nav-logo img {
-  height: 100px;
-  width: 100px;
+  height: 100%;
+  width: auto;
   border-radius: 60px;
   border: 3px solid var(--primary-accent);
   padding: 2px;

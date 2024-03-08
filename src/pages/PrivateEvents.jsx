@@ -2,7 +2,7 @@ import React from "react";
 
 const PrivateEvents = () => {
   return (
-    <div>
+    <div className="page">
       <h1>Private Events</h1>
     </div>
   );

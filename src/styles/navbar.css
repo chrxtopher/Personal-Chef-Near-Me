@@ -29,6 +29,19 @@ nav {
   height: 100px;
   width: 100px;
   border-radius: 60px;
+  border: 3px solid var(--primary-accent);
+  padding: 2px;
+}
+
+.nav-btn {
+  border: none;
+  background-color: var(--primary-light);
+  cursor: pointer;
+  padding: 5px;
+}
+
+.nav-btn:hover {
+  color: var(--primary-mid);
 }
 
 ul {

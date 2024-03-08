@@ -1,0 +1,15 @@
+  .icon-card {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: cetner;
+  justify-content: center;
+  text-align: center;
+  max-width: 280px;
+  gap: 10px;
+}
+
+.icon-card h3 {
+  font-size: 3rem;
+  color: var(--primary-accent);
+}

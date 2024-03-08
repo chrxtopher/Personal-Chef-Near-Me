@@ -10,7 +10,7 @@ const NavBar = () => {
   const navLinkObjects = [
     { route: "/privateevents", btnName: "PRIVATE EVENTS" },
     { route: "/mealprep", btnName: "MEAL PREP" },
-    { route: "/dinnerfortwo", btnName: "INTIMATE DINNERS" },
+    { route: "/intimatedinners", btnName: "INTIMATE DINNERS" },
   ];
 
   const handleDropDownNav = () => {
@@ -30,10 +30,14 @@ const NavBar = () => {
         </div>
         <ul>
           <li>
-            <Link to={"/"}>HOME</Link>
+            <Link to={"/"} onClick={handleCloseDropDown}>
+              HOME
+            </Link>
           </li>
           <li>
-            <Link to={"/about"}>ABOUT</Link>
+            <Link to={"/about"} onClick={handleCloseDropDown}>
+              ABOUT
+            </Link>
           </li>
           <li>
             <button className="nav-btn" onClick={handleDropDownNav}>
@@ -41,7 +45,11 @@ const NavBar = () => {
             </button>
           </li>
         </ul>
-        <DropDownNav linkObjectsArray={navLinkObjects} active={open} />
+        <DropDownNav
+          linkObjectsArray={navLinkObjects}
+          active={open}
+          clickHandler={handleCloseDropDown}
+        />
       </nav>
       <Outlet />
     </>

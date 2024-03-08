@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import pcnmLogo from "../assets/photos/PCNM_LOGO.png";
 import "../styles/navbar.css";
+import DropDownNav from "./DropDownNav";
 
 const NavBar = () => {
+  const [open, setOpen] = useState(false);
+
+  const navLinkObjects = [
+    { route: "/privateevents", btnName: "PRIVATE EVENTS" },
+    { route: "/mealprep", btnName: "MEAL PREP" },
+    { route: "/dinnerfortwo", btnName: "INTIMATE DINNERS" },
+  ];
+
+  const handleDropDownNav = () => {
+    setOpen(!open);
+  };
+
+  const handleCloseDropDown = () => {
+    setOpen(false);
+  };
+
   return (
     <>
       <nav>
@@ -19,12 +36,12 @@ const NavBar = () => {
             <Link to={"/about"}>ABOUT</Link>
           </li>
           <li>
-            <Link to={"/privateevents"}>SERVICES</Link>
-          </li>
-          <li>
-            <Link to={"/faq"}>FAQ</Link>
+            <button className="nav-btn" onClick={handleDropDownNav}>
+              SERVICES
+            </button>
           </li>
         </ul>
+        <DropDownNav linkObjectsArray={navLinkObjects} active={open} />
       </nav>
       <Outlet />
     </>

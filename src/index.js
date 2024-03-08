@@ -6,7 +6,6 @@ import Home from "./pages/Home";
 import NavBar from "./components/NavBar";
 import About from "./pages/About";
 import PrivateEvents from "./pages/PrivateEvents";
-import Faq from "./pages/Faq";
 
 const router = createBrowserRouter([
   {
@@ -23,10 +22,6 @@ const router = createBrowserRouter([
       {
         path: "/privateevents",
         element: <PrivateEvents />,
-      },
-      {
-        path: "/faq",
-        element: <Faq />,
       },
     ],
   },

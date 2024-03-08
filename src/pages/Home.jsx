@@ -2,6 +2,7 @@ import React from "react";
 import PageTitleVideo from "../components/PageTitleVideo";
 import videoBg from "../assets/videos/cooking-bg.mp4";
 import IconCard from "../components/IconCard";
+import ChefChris from "../components/ChefChris";
 import { GrDocumentText } from "react-icons/gr";
 import { FiPhoneCall } from "react-icons/fi";
 import { PiHandshakeFill, PiCookingPotBold } from "react-icons/pi";
@@ -103,6 +104,8 @@ const Home = () => {
         </p>
       </section>
       <section className="page-info">
+        <hr />
+        <ChefChris />
         <hr />
       </section>
     </div>

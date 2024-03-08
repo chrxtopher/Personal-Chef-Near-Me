@@ -17,11 +17,11 @@ const Home = () => {
         asset={videoBg}
         title={"Christopher Smith - Personal Chef"}
         subTitle={
-          "An accomplished and fervent chef, proudly rooted in Phoenix, AZ, dedicated to delivering culinary excellence straight to your home and table."
+          "An accomplished and fervent chef, proudly rooted in Arizona, dedicated to delivering culinary excellence straight to your home and table."
         }
       />
       <section className="page-info">
-        <h2>Placeholder Title</h2>
+        <h2>Private Chef Services In Phoenix, AZ</h2>
         <hr />
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia

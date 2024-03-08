@@ -15,7 +15,7 @@ const Home = () => {
     <div className="page">
       <PageTitleVideo
         asset={videoBg}
-        title={"Christopher Smith - Personal Chef"}
+        title={"Christopher Smith"}
         subTitle={
           "An accomplished and fervent chef, proudly rooted in Arizona, dedicated to delivering culinary excellence straight to your home and table."
         }
@@ -49,7 +49,7 @@ const Home = () => {
           <li>
             <IconCard
               icon={<GrDocumentText />}
-              title={"Step 1 - Complete Form For Requested Service"}
+              title={"Step 1 - Complete & Submit Form"}
             />
           </li>
           <li>

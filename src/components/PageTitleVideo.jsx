@@ -7,7 +7,11 @@ const PageTitleVideo = ({ asset, title, subTitle }) => {
       <video src={asset} autoPlay loop muted />
       <div className="title-cover"></div>
       <div className="title-content">
-        <h1>{title}</h1>
+        <div>
+          <h1>{title}</h1>
+          <h2>{"Personal Chef"}</h2>
+        </div>
+        <hr />
         <p>{subTitle}</p>
       </div>
     </section>

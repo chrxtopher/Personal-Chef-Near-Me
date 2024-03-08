@@ -6,6 +6,8 @@ import Home from "./pages/Home";
 import NavBar from "./components/NavBar";
 import About from "./pages/About";
 import PrivateEvents from "./pages/PrivateEvents";
+import MealPrep from "./pages/MealPrep";
+import IntimateDinners from "./pages/IntimateDinners";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,14 @@ const router = createBrowserRouter([
       {
         path: "/privateevents",
         element: <PrivateEvents />,
+      },
+      {
+        path: "/mealprep",
+        element: <MealPrep />,
+      },
+      {
+        path: "/intimatedinners",
+        element: <IntimateDinners />,
       },
     ],
   },

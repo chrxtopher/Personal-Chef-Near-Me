@@ -4,6 +4,7 @@ import DuoImage from "../components/DuoImage";
 import HowItWorks from "../components/HowItWorks";
 import entree1 from "../assets/photos/entree_1.png";
 import entree3 from "../assets/photos/entree_3.jpeg";
+import PCNM_MENU from "../assets/photos/PCNM_Menu.png";
 
 const PrivateEvents = () => {
   return (
@@ -59,6 +60,23 @@ const PrivateEvents = () => {
         <hr />
       </section>
       <HowItWorks />
+      <section className="page-info menu">
+        <hr />
+        <h2>Choosing Your Menu</h2>
+        <p>
+          I want to make the night magical, so your menu can be completely
+          customized during your phone meeting and consultation. Pricing will be
+          based how many courses are served, ingredients of each plate, as well
+          as the number of guests.
+        </p>
+        <p>
+          Below is a menu I have curated from experience and past events. We can
+          follow this menu precisely, make adjustments, or disregard it
+          entirely. The choice is completely up to you.
+        </p>
+        <img src={PCNM_MENU} alt="Personal Chef Near Me base menu." />
+        <hr />
+      </section>
     </div>
   );
 };

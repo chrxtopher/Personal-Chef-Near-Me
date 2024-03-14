@@ -3,7 +3,7 @@ import PageTitleImage from "../components/PageTitleImage";
 import DuoImage from "../components/DuoImage";
 import HowItWorks from "../components/HowItWorks";
 import entree1 from "../assets/photos/entree_1.png";
-import entree2 from "../assets/photos/entree_2.jpeg";
+import entree3 from "../assets/photos/entree_3.jpeg";
 
 const PrivateEvents = () => {
   return (
@@ -27,10 +27,9 @@ const PrivateEvents = () => {
           distinctio laborum rerum officiis!
         </p>
       </section>
-      <DuoImage asset1={entree1} asset2={entree2} />
+      <DuoImage asset1={entree1} asset2={entree3} />
       <section className="page-info">
-        <h2>Components of Your Custom Experience</h2>
-        <hr />
+        <h2>Components of Your Experience</h2>
         <p>
           There are some things to consider that will be important for your
           dining experience.

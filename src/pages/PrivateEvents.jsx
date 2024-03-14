@@ -1,6 +1,7 @@
 import React from "react";
 import PageTitleImage from "../components/PageTitleImage";
 import DuoImage from "../components/DuoImage";
+import HowItWorks from "../components/HowItWorks";
 import entree1 from "../assets/photos/entree_1.png";
 import entree2 from "../assets/photos/entree_2.jpeg";
 
@@ -56,7 +57,9 @@ const PrivateEvents = () => {
             </p>
           </div>
         </div>
+        <hr />
       </section>
+      <HowItWorks />
     </div>
   );
 };

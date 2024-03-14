@@ -95,3 +95,15 @@ section {
   margin: 0 auto;
   max-width: 1000px;
 }
+
+.dining-components {
+  width: 110%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
+.dining-components div {
+  margin-top: 30px;
+  width: 30%;
+}

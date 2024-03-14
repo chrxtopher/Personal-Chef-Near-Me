@@ -1,0 +1,15 @@
+.duo-image {
+  margin: 60px auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  row-gap: 2em;
+  column-gap: 2em;
+  width: 80%;
+}
+
+.duo-image img {
+  padding: 10px;
+  border: 2px solid var(--primary-accent);
+  width: 100%;
+}

@@ -2,7 +2,6 @@ import React from "react";
 import PageTitleImage from "../components/PageTitleImage";
 import ChefChris from "../components/ChefChris";
 import placeholderImg from "../assets/photos/img-placeholder.png";
-import "../styles/aboutChefChris.css";
 
 const About = () => {
   return (

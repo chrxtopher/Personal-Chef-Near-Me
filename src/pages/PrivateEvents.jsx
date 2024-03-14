@@ -38,13 +38,13 @@ const PrivateEvents = () => {
           <div>
             <h3>1. Party Size</h3>
             <p>
-              The amount of guests will directly effect the price of groceries.
+              The amount of guests will directly effect the cost of groceries.
             </p>
           </div>
           <div>
             <h3>2. Menu Items</h3>
             <p>
-              Numbers of courses and protein choices will largely determine the
+              Number of courses and protein choices will largely determine the
               price and length of your event.
             </p>
           </div>

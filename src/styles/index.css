@@ -107,3 +107,18 @@ section {
   margin-top: 30px;
   width: 30%;
 }
+
+.menu img {
+  margin-top: 25px;
+  border: 2px solid var(--primary-accent);
+  padding: 10px;
+}
+
+.about-chef-chris {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  gap: 30px;
+  line-height: 25px;
+}

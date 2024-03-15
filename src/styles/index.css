@@ -58,8 +58,6 @@ section {
 }
 
 .page {
-  width: 100vw;
-  height: 90vh;
   margin-top: 10vh;
 }
 
@@ -115,7 +113,7 @@ section {
 }
 
 .menu img {
-  margin-top: 25px;
+  margin: 50px 0px;
   border: 2px solid var(--primary-accent);
   padding: 10px;
 }

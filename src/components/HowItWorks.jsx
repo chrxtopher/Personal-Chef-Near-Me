@@ -27,7 +27,7 @@ const HowItWorks = () => {
         <li>
           <IconCard
             icon={<PiHandshakeFill />}
-            title={"Step 3 - In-Person Consultation With Chef"}
+            title={"Step 3 - Personal Consultation With Chef"}
           />
         </li>
         <li>
@@ -61,12 +61,6 @@ const HowItWorks = () => {
           />
         </li>
       </ul>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem hic et
-        rerum, perspiciatis, tempore laboriosam, nostrum nisi rem non iste ex
-        quisquam. Necessitatibus magnam labore voluptate assumenda officiis
-        impedit atque. Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-      </p>
     </section>
   );
 };

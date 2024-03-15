@@ -80,7 +80,6 @@ const PrivateEvents = () => {
         </p>
         <img src={PCNM_MENU} alt="Personal Chef Near Me base menu." />
       </section>
-      <DuoImage asset1={entree2} asset2={entree4} />
       <section className="page-info pricing">
         <h2>Pricing</h2>
         <p>
@@ -132,6 +131,7 @@ const PrivateEvents = () => {
           </p>
         </div>
       </section>
+      <DuoImage asset1={entree2} asset2={entree4} />
     </div>
   );
 };

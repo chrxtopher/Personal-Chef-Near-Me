@@ -3,7 +3,9 @@ import PageTitleVideo from "../components/PageTitleVideo";
 import videoBg from "../assets/videos/cooking-bg.mp4";
 import HowItWorks from "../components/HowItWorks";
 import ChefChris from "../components/ChefChris";
-
+import DuoImage from "../components/DuoImage";
+import entree1 from "../assets/photos/entree_1.png";
+import entree3 from "../assets/photos/entree_3.jpeg";
 const Home = () => {
   return (
     <div className="page">
@@ -35,8 +37,8 @@ const Home = () => {
           maiores eaque quidem dignissimos in iure ex exercitationem distinctio,
           eos mollitia.
         </p>
-        <hr />
       </section>
+      <DuoImage asset1={entree1} asset2={entree3} />
       <HowItWorks />
       <section className="page-info">
         <hr />

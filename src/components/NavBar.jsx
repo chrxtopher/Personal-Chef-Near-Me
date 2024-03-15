@@ -10,7 +10,6 @@ const NavBar = () => {
   const navLinkObjects = [
     { route: "/privateevents", btnName: "PRIVATE EVENTS" },
     { route: "/mealprep", btnName: "MEAL PREP" },
-    { route: "/intimatedinners", btnName: "INTIMATE DINNERS" },
   ];
 
   const handleDropDownNav = () => {

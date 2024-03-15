@@ -15,10 +15,10 @@ const PrivateEvents = () => {
         asset={entree1}
         altText={"entree"}
         title={"Dining Events"}
-        subTitle={""}
+        subTitle={"Date Nights, Family Gatherings, And Business Meetings"}
       />
       <section className="page-info">
-        <h2>Date Nights, Family Gatherings, And Business Meetings</h2>
+        <h2>Exquisite Dining Experiences</h2>
         <p>
           Indulge in an exclusive culinary journey tailored just for you.
           Elevate your dining experience with a private dining event, where

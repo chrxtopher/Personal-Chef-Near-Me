@@ -41,7 +41,6 @@ const Home = () => {
       <section className="page-info">
         <hr />
         <ChefChris />
-        <hr />
       </section>
     </div>
   );

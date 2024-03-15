@@ -2,15 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./styles/index.css";
+import Layout from "./components/Layout";
 import Home from "./pages/Home";
-import NavBar from "./components/NavBar";
 import About from "./pages/About";
 import PrivateEvents from "./pages/PrivateEvents";
 import MealPrep from "./pages/MealPrep";
 
 const router = createBrowserRouter([
   {
-    element: <NavBar />,
+    element: <Layout />,
     children: [
       {
         path: "/",

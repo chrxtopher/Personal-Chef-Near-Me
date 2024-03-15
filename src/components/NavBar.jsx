@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import pcnmLogo from "../assets/photos/PCNM_LOGO.png";
 import "../styles/navbar.css";
 import DropDownNav from "./DropDownNav";
@@ -50,7 +50,6 @@ const NavBar = () => {
           clickHandler={handleCloseDropDown}
         />
       </nav>
-      <Outlet />
     </>
   );
 };

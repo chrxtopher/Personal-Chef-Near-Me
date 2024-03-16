@@ -83,11 +83,11 @@ const PrivateEvents = () => {
       <section className="page-info pricing">
         <h2>Pricing</h2>
         <p>
-          A high-level desription of pricing is below. Consultation fee is $150,
-          this acts as your deposit for the event. Each event has a minimum $200
-          overall price. All prices will be discussed thoroughly and agreed upon
-          during your phone appointment and consultation, as well as a preferred
-          payment method.
+          A high-level description of pricing is below. Consultation fee is
+          $150, this acts as your deposit for the event. Each event has a
+          minimum $200 overall price. All prices will be discussed thoroughly
+          and agreed upon during your phone appointment and consultation, as
+          well as a preferred payment method.
         </p>
         <p>
           USD is the only accepted currency. Cash or personal checks not

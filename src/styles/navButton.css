@@ -1,0 +1,13 @@
+.nav-button {
+  border: none;
+  border-radius: 4px;
+  background-color: var(--primary-accent);
+  padding: 16px 22px;
+  height: 52px;
+  font-size: 1rem;
+}
+
+.nav-button:hover {
+  cursor: pointer;
+  background-color: var(--secondary-accent);
+}

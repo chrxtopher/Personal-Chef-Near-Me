@@ -11,4 +11,5 @@
 .nav-button:hover {
   cursor: pointer;
   background-color: var(--secondary-accent);
+  color: var(--primary-dark);
 }

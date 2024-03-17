@@ -1,5 +1,6 @@
 import React from "react";
 import IconCard from "./IconCard";
+import NavButton from "./NavButton";
 import { GrDocumentText } from "react-icons/gr";
 import { FiPhoneCall } from "react-icons/fi";
 import { PiHandshakeFill, PiCookingPotBold } from "react-icons/pi";
@@ -61,6 +62,7 @@ const HowItWorks = () => {
           />
         </li>
       </ul>
+      <NavButton route={"/booking"} title={"Get Started"} />
     </section>
   );
 };

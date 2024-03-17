@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import PrivateEvents from "./pages/PrivateEvents";
 import MealPrep from "./pages/MealPrep";
+import Booking from "./pages/Booking";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/mealprep",
         element: <MealPrep />,
+      },
+      {
+        path: "/booking",
+        element: <Booking />,
       },
     ],
   },

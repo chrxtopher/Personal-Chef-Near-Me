@@ -1,10 +1,11 @@
 .nav-button {
   border: none;
-  border-radius: 4px;
+  border-radius: 2px;
   background-color: var(--primary-accent);
   padding: 16px 22px;
   height: 52px;
   font-size: 1rem;
+  color: var(--primary-light);
 }
 
 .nav-button:hover {

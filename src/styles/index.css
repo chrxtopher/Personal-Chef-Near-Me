@@ -137,3 +137,7 @@ section {
   gap: 30px;
   line-height: 25px;
 }
+
+.meal-prep-menu {
+  width: 850px;
+}

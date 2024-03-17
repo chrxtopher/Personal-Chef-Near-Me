@@ -5,7 +5,7 @@ const Booking = () => {
   return (
     <div className="page">
       <section className="page-info">
-        <h1>Booking</h1>
+        <h1>Let's Get Started</h1>
         <p>
           Complete and submit the form below to begin the booking process. I
           will receive your inquiry information and will be in contact via email

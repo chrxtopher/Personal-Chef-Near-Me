@@ -113,11 +113,11 @@ const BookingForm = () => {
             </small>
           </div>
           <div className="input-section large-text">
-            <label for="allergies">Allergy Concerns & Preferences</label>
+            <label for="allergies">Allergy Concerns</label>
             <textarea name="allergies" rows="10" cols="50" />
             <small>
-              Please be sure to include any allergy information or preferences
-              for all guests that I will be cooking for.
+              Include any allergy information for all guests that I will be
+              cooking for.
             </small>
           </div>
         </div>

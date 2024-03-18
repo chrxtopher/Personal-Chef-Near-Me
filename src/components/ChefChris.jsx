@@ -10,10 +10,10 @@ const ChefChris = () => {
         <div>
           <h2>Chef Chris</h2>
           <p>
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta quos
-            illum vero autem laboriosam, facere perferendis odit dignissimos,
-            dolor itaque architecto quod suscipit voluptatibus reprehenderit,
-            aperiam consequatur perspiciatis ab et."
+            "Cooking is all about people. Food is maybe the only universal thing
+            that really has the power to bring everyone together. No matter what
+            culture, everywhere around the world, people get together to eat." -
+            Guy Fieri
           </p>
         </div>
       </div>

@@ -4,38 +4,125 @@ import { sendBookingEmail } from "../utility";
 import "../styles/bookingForm.css";
 
 const BookingForm = () => {
+  const baseInfo = {
+    email: "",
+    firstName: "",
+    lastName: "",
+    phone: "",
+    service: "Private Event",
+    serviceDate: "",
+    guestCount: "default",
+    mealsPerWeek: "default",
+    description: "",
+    allergies: "",
+  };
+  const [loading, setLoading] = useState(false);
   const [service, setService] = useState("Private Event");
+  const [formInfo, setFormInfo] = useState(baseInfo);
+
+  const handleFirstNameChange = (e) => {
+    setFormInfo({
+      ...formInfo,
+      firstName: e.target.value,
+    });
+  };
+
+  const handleLastNameChange = (e) => {
+    setFormInfo({
+      ...formInfo,
+      lastName: e.target.value,
+    });
+  };
+
+  const handleEmailChange = (e) => {
+    setFormInfo({
+      ...formInfo,
+      email: e.target.value,
+    });
+  };
+
+  const handlePhoneChange = (e) => {
+    setFormInfo({
+      ...formInfo,
+      phone: e.target.value,
+    });
+  };
 
   const handleServiceChange = (e) => {
     setService(e.target.value);
+    setFormInfo({
+      ...formInfo,
+      service: e.target.value,
+      guestCount: "N/A",
+      mealsPerWeek: "N/A",
+    });
   };
 
-  const handleSubmit = (e) => {
+  const handleServiceDateChange = (e) => {
+    setFormInfo({
+      ...formInfo,
+      serviceDate: e.target.value,
+    });
+  };
+
+  const handleGuestCountChange = (e) => {
+    setFormInfo({
+      ...formInfo,
+      guestCount: e.target.value,
+    });
+  };
+
+  const handleMealsPerWeekChange = (e) => {
+    setFormInfo({
+      ...formInfo,
+      mealsPerWeek: e.target.value,
+    });
+  };
+
+  const handleDescriptionChange = (e) => {
+    setFormInfo({
+      ...formInfo,
+      description: e.target.value,
+    });
+  };
+
+  const handleAllergiesChange = (e) => {
+    setFormInfo({
+      ...formInfo,
+      allergies: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    sendBookingEmail();
+    setLoading(true);
+    await sendBookingEmail(formInfo);
+    setLoading(false);
   };
 
   return (
     <div className="form-container">
-      <form className="booking-form">
+      <form className="booking-form" onSubmit={handleSubmit}>
         <div className="input-container">
           <div className="input-section">
-            <label for="fname">First Name</label>
+            <label for="firstName">First Name</label>
             <input
               type="text"
-              id="fname"
-              name="fname"
+              id="firstName"
+              name="firstName"
               placeholder="John"
+              onChange={handleFirstNameChange}
               required
             />
           </div>
           <div className="input-section">
-            <label for="lname">Last Name</label>
+            <label for="lastName">Last Name</label>
             <input
               type="text"
-              id="lname"
-              name="lname"
+              id="lastName"
+              name="lastName"
               placeholder="Smith"
+              onChange={handleLastNameChange}
               required
             />
           </div>
@@ -48,6 +135,7 @@ const BookingForm = () => {
               id="email"
               name="email"
               placeholder="john.smith@example.com"
+              onChange={handleEmailChange}
               required
             />
           </div>
@@ -59,6 +147,7 @@ const BookingForm = () => {
               name="phone"
               placeholder="123-456-7890"
               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+              onChange={handlePhoneChange}
               required
             />
             <small>Format: 123-456-7890</small>
@@ -73,16 +162,27 @@ const BookingForm = () => {
             </select>
           </div>
           <div className="input-section">
-            <label for="date">Date of Service</label>
-            <input type="date" id="date" name="date" required />
+            <label for="serviceDate">Date of Service</label>
+            <input
+              type="date"
+              id="serviceDate"
+              name="serviceDate"
+              onChange={handleServiceDateChange}
+              required
+            />
           </div>
         </div>
 
         {service === "Private Event" && (
           <div className="input-container">
             <div className="input-section">
-              <label for="guests">Guest Count</label>
-              <select id="guests" name="guests">
+              <label for="guestCount">Guest Count</label>
+              <select
+                id="guestCount"
+                name="guestCount"
+                onChange={handleGuestCountChange}
+              >
+                <option value="default">Select</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
@@ -95,8 +195,13 @@ const BookingForm = () => {
         {service === "Meal Prep" && (
           <div className="input-container">
             <div className="input-section">
-              <label for="mealCount">Number of Meals Per Week</label>
-              <select id="mealCount" name="mealCount">
+              <label for="mealsPerWeek">Number of Meals Per Week</label>
+              <select
+                id="mealsPerWeek"
+                name="mealsPerWeek"
+                onChange={handleMealsPerWeekChange}
+              >
+                <option value="default">Select</option>
                 <option value="10">10</option>
                 <option value="20">20</option>
                 <option value="30">30</option>
@@ -109,8 +214,13 @@ const BookingForm = () => {
         <div className="input-container">
           <div className="input-section large-text">
             <label for="description">Event & Food Description</label>
-
-            <textarea name="description" rows="10" cols="50" />
+            <textarea
+              name="description"
+              rows="10"
+              cols="50"
+              onChange={handleDescriptionChange}
+              required
+            />
             <small>
               Basis of expectations for menu and services. Please provide some
               brief information on the type of event (if applicable), preferred
@@ -120,16 +230,21 @@ const BookingForm = () => {
           </div>
           <div className="input-section large-text">
             <label for="allergies">Allergy Concerns</label>
-            <textarea name="allergies" rows="10" cols="50" />
+            <textarea
+              name="allergies"
+              rows="10"
+              cols="50"
+              onChange={handleAllergiesChange}
+              required
+            />
             <small>
               Include any allergy information for all guests that I will be
               cooking for.
             </small>
           </div>
         </div>
-        <button type="submit" onClick={handleSubmit}>
-          Submit
-        </button>
+        <button type="submit">Submit</button>
+        <p>{loading ? "loading" : "ready"}</p>
       </form>
     </div>
   );

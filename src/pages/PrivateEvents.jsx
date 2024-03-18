@@ -32,7 +32,7 @@ const PrivateEvents = () => {
           of every culinary detail, ensuring an unforgettable dining experience
           from start to finish.
         </p>
-        <NavButton route={"/booking"} title={"Book An Event"} />
+        <NavButton route={"/booking"} title={"Book A Dining Event"} />
       </section>
       <DuoImage asset1={entree1} asset2={entree3} />
       <section className="page-info">

@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { sendBookingEmail } from "../utility";
 import "../styles/bookingForm.css";
 
 const BookingForm = () => {
@@ -7,6 +8,11 @@ const BookingForm = () => {
 
   const handleServiceChange = (e) => {
     setService(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    sendBookingEmail();
   };
 
   return (
@@ -121,6 +127,9 @@ const BookingForm = () => {
             </small>
           </div>
         </div>
+        <button type="submit" onClick={handleSubmit}>
+          Submit
+        </button>
       </form>
     </div>
   );

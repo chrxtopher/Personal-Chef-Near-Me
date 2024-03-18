@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import Loading from "./Loading";
 import { sendBookingEmail } from "../utility";
 import "../styles/bookingForm.css";
 
@@ -243,8 +244,19 @@ const BookingForm = () => {
             </small>
           </div>
         </div>
-        <button type="submit">Submit</button>
-        <p>{loading ? "loading" : "ready"}</p>
+        <button
+          type="submit"
+          disabled={loading ? true : false}
+          className="submit-button"
+        >
+          Send Request
+        </button>
+        {loading && (
+          <div className="page-info">
+            <Loading />
+            <small>Sending your request. This may take a moment.</small>
+          </div>
+        )}
       </form>
     </div>
   );

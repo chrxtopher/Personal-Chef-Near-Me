@@ -165,3 +165,10 @@ section {
   color: var(--primary-light);
   cursor: not-allowed;
 }
+
+@media (max-width: 480px) {
+  .page-info {
+    width: 100vw;
+    padding: 0 25px;
+  }
+}

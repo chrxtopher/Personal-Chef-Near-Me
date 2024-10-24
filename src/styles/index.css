@@ -170,4 +170,13 @@ section {
     width: 100vw;
     padding: 0 35px;
   }
+
+  .how-it-works {
+    padding: 25px;
+  }
+
+  .how-it-works ul {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0;
+  }
 }

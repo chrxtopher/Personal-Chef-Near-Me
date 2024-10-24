@@ -22,6 +22,11 @@
 
 @media (max-width: 480px) {
   .chef-chris {
+    flex-direction: column;
     gap: 15px;
+  }
+
+  .chef-chris img {
+    width: 60%;
   }
 }

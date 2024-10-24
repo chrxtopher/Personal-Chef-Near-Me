@@ -27,3 +27,12 @@ footer img {
   margin-top: 25px;
   font-size: 3rem;
 }
+
+@media (max-width: 480px) {
+  footer {
+    padding: 50px 25px;
+  }
+  footer img {
+    width: 100%;
+  }
+}

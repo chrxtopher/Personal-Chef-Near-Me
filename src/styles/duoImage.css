@@ -13,3 +13,9 @@
   border: 2px solid var(--primary-accent);
   width: 100%;
 }
+
+@media (max-width: 480px) {
+  .duo-image {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

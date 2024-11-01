@@ -73,3 +73,16 @@ a:active {
 a:hover {
   color: var(--primary-mid);
 }
+
+@media (max-width: 480px) {
+  nav {
+    padding: 5px 15px;
+  }
+  .nav-logo h1 {
+    display: none;
+  }
+
+  li {
+    margin: 0 20px;
+  }
+}

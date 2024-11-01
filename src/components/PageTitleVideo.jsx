@@ -4,7 +4,7 @@ import "../styles/pageTitle.css";
 const PageTitleVideo = ({ asset, title, subTitle }) => {
   return (
     <section className="title-section">
-      <video src={asset} autoPlay loop muted />
+      <video src={asset} autoPlay playsInline loop muted />
       <div className="title-cover"></div>
       <div className="title-content">
         <div>

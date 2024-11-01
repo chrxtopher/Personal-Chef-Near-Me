@@ -171,12 +171,31 @@ section {
     padding: 0 35px;
   }
 
+  .dining-components {
+    flex-direction: column;
+    align-items: center;
+    text-align: start;
+  }
+
+  .dining-components div {
+    width: 80%;
+  }
+
   .how-it-works {
     padding: 25px;
   }
 
+  .how-it-works p {
+    font-size: 0.9rem;
+  }
+
   .how-it-works ul {
     grid-template-columns: repeat(2, 1fr);
+    padding: 0;
+  }
+
+  .menu img {
+    width: 100%;
     padding: 0;
   }
 }

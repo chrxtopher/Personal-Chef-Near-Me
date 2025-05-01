@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import Loading from "./Loading";
 import { sendBookingEmail } from "../utility";
 import RequestSentResponse from "./RequestSentResponse";
@@ -16,17 +16,18 @@ const BookingForm = () => {
     firstName: "",
     lastName: "",
     phone: "",
-    service: "Private Event",
+    service: "",
     serviceDate: "",
-    guestCount: "default",
-    mealsPerWeek: "default",
+    guestCount: "",
+    mealsPerWeek: "",
     description: "",
     allergies: "",
   };
   const [formSent, setFormSent] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [service, setService] = useState("Private Event");
+  const [service, setService] = useState("");
   const [formInfo, setFormInfo] = useState(baseInfo);
+  const swiper = useSwiper();
 
   const handleFirstNameChange = (e) => {
     setFormInfo({
@@ -56,13 +57,29 @@ const BookingForm = () => {
     });
   };
 
-  const handleServiceChange = (e) => {
-    setService(e.target.value);
+  // const handleServiceChange = (e) => {
+  //   setService(e.target.value);
+  //   setFormInfo({
+  //     ...formInfo,
+  //     service: e.target.value,
+  //     guestCount: "N/A",
+  //     mealsPerWeek: "N/A",
+  //   });
+  // };
+
+  const handleMealPrepSelection = (e) => {
+    setService("Meal Prep");
     setFormInfo({
       ...formInfo,
-      service: e.target.value,
-      guestCount: "N/A",
-      mealsPerWeek: "N/A",
+      service: "Meal Prep",
+    });
+  };
+
+  const handlePrivateEventSelection = (e) => {
+    setService("Private Event");
+    setFormInfo({
+      ...formInfo,
+      service: "Private Event",
     });
   };
 
@@ -103,11 +120,11 @@ const BookingForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("submit hit");
-    setLoading(true);
-    await sendBookingEmail(formInfo);
-    setLoading(false);
-    setFormSent(true);
+    console.log(formInfo);
+    // setLoading(true);
+    // await sendBookingEmail(formInfo);
+    // setLoading(false);
+    // setFormSent(true);
   };
 
   if (formSent) {
@@ -120,22 +137,31 @@ const BookingForm = () => {
           grabCursor={false}
           allowTouchMove={false}
         >
-          <SwiperButtonPrev />
-          <form onSubmit={handleSubmit}>
-            <SwiperSlide>
-              PRIVATE EVENT OR MEAL PREP - buttons?
-              <label for="service">Requested Service</label>
-              <select
-                id="service"
-                name="service"
-                onChange={handleServiceChange}
+          <SwiperButtonPrev btnTitle="Back" />
+          <SwiperSlide>
+            <div className="selection-btns-container">
+              <button
+                type="button"
+                className={`selection-btn ${
+                  service === "Meal Prep" ? "active" : ""
+                }`}
+                onClick={handleMealPrepSelection}
               >
-                <option value="Private Event">Private Event</option>
-                <option value="Meal Prep">Meal Prep</option>
-              </select>
-            </SwiperSlide>
-
-            <SwiperSlide>
+                Meal Prep
+              </button>
+              <button
+                type="button"
+                className={`selection-btn ${
+                  service === "Private Event" ? "active" : ""
+                }`}
+                onClick={handlePrivateEventSelection}
+              >
+                Private Event
+              </button>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="input-container-vert">
               <label for="firstName">First Name</label>
               <input
                 type="text"
@@ -144,6 +170,8 @@ const BookingForm = () => {
                 placeholder="John"
                 onChange={handleFirstNameChange}
               />
+            </div>
+            <div className="input-container-vert">
               <label for="lastName">Last Name</label>
               <input
                 type="text"
@@ -152,8 +180,10 @@ const BookingForm = () => {
                 placeholder="Smith"
                 onChange={handleLastNameChange}
               />
-            </SwiperSlide>
-            <SwiperSlide>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="input-container-vert">
               <label for="email">Email</label>
               <input
                 type="email"
@@ -170,12 +200,13 @@ const BookingForm = () => {
                 placeholder="123-456-7890"
                 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                 onChange={handlePhoneChange}
-                required
               />
-            </SwiperSlide>
-            <SwiperSlide>
-              {service === "Private Event" && (
-                <>
+            </div>
+          </SwiperSlide>
+          {service === "Private Event" && (
+            <>
+              <SwiperSlide>
+                <div className="input-container-vert">
                   <label for="guestCount">Guest Count</label>
                   <select
                     id="guestCount"
@@ -189,74 +220,75 @@ const BookingForm = () => {
                     <option value="5">5</option>
                     <option value="6">6</option>
                   </select>
-                  <label for="serviceDate">Date of Service</label>
+                  <label for="serviceDate">Date of Event</label>
                   <input
                     type="date"
                     id="serviceDate"
                     name="serviceDate"
                     onChange={handleServiceDateChange}
-                    required
                   />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="input-container-vert">
                   <label for="description">Event Description</label>
                   <textarea
                     name="description"
                     rows="10"
                     cols="50"
                     onChange={handleDescriptionChange}
-                    required
                   />
-                </>
-              )}
-              {service === "Meal Prep" && (
-                <>
-                  <label for="mealsPerWeek">Number of Meals Per Week</label>
-                  <select
-                    id="mealsPerWeek"
-                    name="mealsPerWeek"
-                    onChange={handleMealsPerWeekChange}
-                  >
-                    <option value="default">Select</option>
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="30">30</option>
-                    <option value="40">40</option>
-                    <option value="50+">50+</option>
-                  </select>
-                </>
-              )}
-            </SwiperSlide>
-            <SwiperSlide>
+                </div>
+              </SwiperSlide>
+            </>
+          )}
+          {service === "Meal Prep" && (
+            <>
+              <SwiperSlide>
+                <label for="mealsPerWeek">Number of Meals Per Week</label>
+                <select
+                  id="mealsPerWeek"
+                  name="mealsPerWeek"
+                  onChange={handleMealsPerWeekChange}
+                >
+                  <option value="default">Select</option>
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+                  <option value="30">30</option>
+                  <option value="40">40</option>
+                  <option value="50+">50+</option>
+                </select>
+              </SwiperSlide>
+            </>
+          )}
+          <SwiperSlide>
+            <div className="input-container-vert">
               <label for="allergies">Allergy Concerns</label>
               <textarea
                 name="allergies"
                 rows="10"
                 cols="50"
                 onChange={handleAllergiesChange}
-                required
               />
-              <small>
-                Include any allergy information for all guests that I will be
-                cooking for.
-              </small>
-            </SwiperSlide>
-            <SwiperSlide>
-              DISPLAY INFORMATION FOR PREVIEW
-              <button
-                type="submit"
-                disabled={loading ? true : false}
-                className="submit-button"
-                onClick={handleSubmit}
-              >
-                Submit
-              </button>
-              {loading && (
-                <div className="page-info">
-                  <Loading />
-                  <small>Sending your request. This may take a moment.</small>
-                </div>
-              )}
-            </SwiperSlide>
-          </form>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            DISPLAY INFORMATION FOR PREVIEW
+            <button
+              type="submit"
+              disabled={loading ? true : false}
+              className="submit-button"
+              onClick={handleSubmit}
+            >
+              Submit
+            </button>
+            {loading && (
+              <div className="page-info">
+                <Loading />
+                <small>Sending your request. This may take a moment.</small>
+              </div>
+            )}
+          </SwiperSlide>
           <SwiperButtonNext />
         </Swiper>
       </div>

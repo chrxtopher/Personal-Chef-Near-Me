@@ -15,7 +15,7 @@ const PrivateEvents = () => {
       <PageTitleImage
         asset={entree1}
         altText={"entree"}
-        title={"Dining Events"}
+        title={"Private Events"}
         subTitle={"Date Nights, Family Gatherings, And Business Meetings"}
       />
       <section className="page-info">

@@ -1,12 +1,12 @@
 import React from "react";
 import { useState } from "react";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import Loading from "./Loading";
 import { sendBookingEmail } from "../utility";
 import RequestSentResponse from "./RequestSentResponse";
 import "../styles/bookingForm.css";
 import "swiper/css";
-import { Navigation } from "swiper/modules";
+import { Navigation, EffectCreative } from "swiper/modules";
 import SwiperButtonNext from "./SwiperButtonNext";
 import SwiperButtonPrev from "./SwiperButtonPrev";
 
@@ -27,7 +27,6 @@ const BookingForm = () => {
   const [loading, setLoading] = useState(false);
   const [service, setService] = useState("");
   const [formInfo, setFormInfo] = useState(baseInfo);
-  const swiper = useSwiper();
 
   const handleFirstNameChange = (e) => {
     setFormInfo({
@@ -133,33 +132,21 @@ const BookingForm = () => {
     return (
       <div>
         <Swiper
-          modules={[Navigation]}
           grabCursor={false}
           allowTouchMove={false}
+          creativeEffect={{
+            prev: {
+              shadow: false,
+              translate: [0, 0, -400],
+            },
+            next: {
+              translate: ["100%", 0, 0],
+            },
+          }}
+          speed={800}
+          modules={[Navigation, EffectCreative]}
         >
           <SwiperButtonPrev btnTitle="Back" />
-          <SwiperSlide>
-            <div className="selection-btns-container">
-              <button
-                type="button"
-                className={`selection-btn ${
-                  service === "Meal Prep" ? "active" : ""
-                }`}
-                onClick={handleMealPrepSelection}
-              >
-                Meal Prep
-              </button>
-              <button
-                type="button"
-                className={`selection-btn ${
-                  service === "Private Event" ? "active" : ""
-                }`}
-                onClick={handlePrivateEventSelection}
-              >
-                Private Event
-              </button>
-            </div>
-          </SwiperSlide>
           <SwiperSlide>
             <div className="input-container-vert">
               <label for="firstName">First Name</label>
@@ -192,6 +179,8 @@ const BookingForm = () => {
                 placeholder="john.smith@example.com"
                 onChange={handleEmailChange}
               />
+            </div>
+            <div className="input-container-vert">
               <label for="phone">Phone Number</label>
               <input
                 type="tel"
@@ -201,6 +190,28 @@ const BookingForm = () => {
                 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                 onChange={handlePhoneChange}
               />
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="selection-btns-container">
+              <button
+                type="button"
+                className={`selection-btn ${
+                  service === "Meal Prep" ? "active-btn" : ""
+                }`}
+                onClick={handleMealPrepSelection}
+              >
+                Meal Prep
+              </button>
+              <button
+                type="button"
+                className={`selection-btn ${
+                  service === "Private Event" ? "active-btn" : ""
+                }`}
+                onClick={handlePrivateEventSelection}
+              >
+                Private Event
+              </button>
             </div>
           </SwiperSlide>
           {service === "Private Event" && (
@@ -220,6 +231,8 @@ const BookingForm = () => {
                     <option value="5">5</option>
                     <option value="6">6</option>
                   </select>
+                </div>
+                <div className="input-container-vert">
                   <label for="serviceDate">Date of Event</label>
                   <input
                     type="date"
@@ -234,7 +247,7 @@ const BookingForm = () => {
                   <label for="description">Event Description</label>
                   <textarea
                     name="description"
-                    rows="10"
+                    rows="8"
                     cols="50"
                     onChange={handleDescriptionChange}
                   />
@@ -242,46 +255,62 @@ const BookingForm = () => {
               </SwiperSlide>
             </>
           )}
-          {service === "Meal Prep" && (
+          {(service === "Meal Prep" && (
             <>
               <SwiperSlide>
-                <label for="mealsPerWeek">Number of Meals Per Week</label>
-                <select
-                  id="mealsPerWeek"
-                  name="mealsPerWeek"
-                  onChange={handleMealsPerWeekChange}
-                >
-                  <option value="default">Select</option>
-                  <option value="10">10</option>
-                  <option value="20">20</option>
-                  <option value="30">30</option>
-                  <option value="40">40</option>
-                  <option value="50+">50+</option>
-                </select>
+                <div className="input-container-vert">
+                  <label for="mealsPerWeek">Number of Meals Per Week</label>
+                  <select
+                    id="mealsPerWeek"
+                    name="mealsPerWeek"
+                    onChange={handleMealsPerWeekChange}
+                  >
+                    <option value="default">Select</option>
+                    <option value="10">10</option>
+                    <option value="10">15</option>
+                    <option value="20">20</option>
+                    <option value="10">25</option>
+                    <option value="30">30</option>
+                    <option value="40">35</option>
+                    <option value="10">40</option>
+                    <option value="50+">50+</option>
+                  </select>
+                </div>
               </SwiperSlide>
             </>
-          )}
+          )) ||
+            (service === "" && (
+              <>
+                <SwiperSlide>
+                  <label for="mealsPerWeek">Number of Meals Per Week</label>
+                  <select
+                    id="mealsPerWeek"
+                    name="mealsPerWeek"
+                    onChange={handleMealsPerWeekChange}
+                  >
+                    <option value="default">Select</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="40">40</option>
+                    <option value="50+">50+</option>
+                  </select>
+                </SwiperSlide>
+              </>
+            ))}
           <SwiperSlide>
             <div className="input-container-vert">
               <label for="allergies">Allergy Concerns</label>
               <textarea
                 name="allergies"
-                rows="10"
+                rows="8"
                 cols="50"
                 onChange={handleAllergiesChange}
               />
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            DISPLAY INFORMATION FOR PREVIEW
-            <button
-              type="submit"
-              disabled={loading ? true : false}
-              className="submit-button"
-              onClick={handleSubmit}
-            >
-              Submit
-            </button>
+            Double check info
             {loading && (
               <div className="page-info">
                 <Loading />

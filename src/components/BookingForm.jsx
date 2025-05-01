@@ -1,9 +1,14 @@
 import React from "react";
 import { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import Loading from "./Loading";
 import { sendBookingEmail } from "../utility";
 import RequestSentResponse from "./RequestSentResponse";
 import "../styles/bookingForm.css";
+import "swiper/css";
+import { Navigation } from "swiper/modules";
+import SwiperButtonNext from "./SwiperButtonNext";
+import SwiperButtonPrev from "./SwiperButtonPrev";
 
 const BookingForm = () => {
   const baseInfo = {
@@ -98,6 +103,7 @@ const BookingForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("submit hit");
     setLoading(true);
     await sendBookingEmail(formInfo);
     setLoading(false);
@@ -108,10 +114,28 @@ const BookingForm = () => {
     return <RequestSentResponse />;
   } else {
     return (
-      <div className="form-container">
-        <form className="booking-form" onSubmit={handleSubmit}>
-          <div className="input-container">
-            <div className="input-section">
+      <div>
+        <Swiper
+          modules={[Navigation]}
+          grabCursor={false}
+          allowTouchMove={false}
+        >
+          <SwiperButtonPrev />
+          <form onSubmit={handleSubmit}>
+            <SwiperSlide>
+              PRIVATE EVENT OR MEAL PREP - buttons?
+              <label for="service">Requested Service</label>
+              <select
+                id="service"
+                name="service"
+                onChange={handleServiceChange}
+              >
+                <option value="Private Event">Private Event</option>
+                <option value="Meal Prep">Meal Prep</option>
+              </select>
+            </SwiperSlide>
+
+            <SwiperSlide>
               <label for="firstName">First Name</label>
               <input
                 type="text"
@@ -119,10 +143,7 @@ const BookingForm = () => {
                 name="firstName"
                 placeholder="John"
                 onChange={handleFirstNameChange}
-                required
               />
-            </div>
-            <div className="input-section">
               <label for="lastName">Last Name</label>
               <input
                 type="text"
@@ -130,12 +151,9 @@ const BookingForm = () => {
                 name="lastName"
                 placeholder="Smith"
                 onChange={handleLastNameChange}
-                required
               />
-            </div>
-          </div>
-          <div className="input-container">
-            <div className="input-section">
+            </SwiperSlide>
+            <SwiperSlide>
               <label for="email">Email</label>
               <input
                 type="email"
@@ -143,10 +161,7 @@ const BookingForm = () => {
                 name="email"
                 placeholder="john.smith@example.com"
                 onChange={handleEmailChange}
-                required
               />
-            </div>
-            <div className="input-section">
               <label for="phone">Phone Number</label>
               <input
                 type="tel"
@@ -157,90 +172,60 @@ const BookingForm = () => {
                 onChange={handlePhoneChange}
                 required
               />
-              <small>Format: 123-456-7890</small>
-            </div>
-          </div>
-          <div className="input-container">
-            <div className="input-section">
-              <label for="service">Requested Service</label>
-              <select
-                id="service"
-                name="service"
-                onChange={handleServiceChange}
-              >
-                <option value="Private Event">Private Event</option>
-                <option value="Meal Prep">Meal Prep</option>
-              </select>
-            </div>
-            <div className="input-section">
-              <label for="serviceDate">Date of Service</label>
-              <input
-                type="date"
-                id="serviceDate"
-                name="serviceDate"
-                onChange={handleServiceDateChange}
-                required
-              />
-            </div>
-          </div>
-
-          {service === "Private Event" && (
-            <div className="input-container">
-              <div className="input-section">
-                <label for="guestCount">Guest Count</label>
-                <select
-                  id="guestCount"
-                  name="guestCount"
-                  onChange={handleGuestCountChange}
-                >
-                  <option value="default">Select</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                </select>
-              </div>
-            </div>
-          )}
-          {service === "Meal Prep" && (
-            <div className="input-container">
-              <div className="input-section">
-                <label for="mealsPerWeek">Number of Meals Per Week</label>
-                <select
-                  id="mealsPerWeek"
-                  name="mealsPerWeek"
-                  onChange={handleMealsPerWeekChange}
-                >
-                  <option value="default">Select</option>
-                  <option value="10">10</option>
-                  <option value="20">20</option>
-                  <option value="30">30</option>
-                  <option value="40">40</option>
-                  <option value="50+">50+</option>
-                </select>
-              </div>
-            </div>
-          )}
-          <div className="input-container">
-            <div className="input-section large-text">
-              <label for="description">Event & Food Description</label>
-              <textarea
-                name="description"
-                rows="10"
-                cols="50"
-                onChange={handleDescriptionChange}
-                required
-              />
-              <small>
-                Basis of expectations for menu and services. Please provide some
-                brief information on the type of event (if applicable),
-                preferred ingredients for plates/meals (ie. proteins and
-                veggies), or any information that will help us curate the
-                perfect experience.
-              </small>
-            </div>
-            <div className="input-section large-text">
+            </SwiperSlide>
+            <SwiperSlide>
+              {service === "Private Event" && (
+                <>
+                  <label for="guestCount">Guest Count</label>
+                  <select
+                    id="guestCount"
+                    name="guestCount"
+                    onChange={handleGuestCountChange}
+                  >
+                    <option value="default">Select</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                  </select>
+                  <label for="serviceDate">Date of Service</label>
+                  <input
+                    type="date"
+                    id="serviceDate"
+                    name="serviceDate"
+                    onChange={handleServiceDateChange}
+                    required
+                  />
+                  <label for="description">Event Description</label>
+                  <textarea
+                    name="description"
+                    rows="10"
+                    cols="50"
+                    onChange={handleDescriptionChange}
+                    required
+                  />
+                </>
+              )}
+              {service === "Meal Prep" && (
+                <>
+                  <label for="mealsPerWeek">Number of Meals Per Week</label>
+                  <select
+                    id="mealsPerWeek"
+                    name="mealsPerWeek"
+                    onChange={handleMealsPerWeekChange}
+                  >
+                    <option value="default">Select</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="40">40</option>
+                    <option value="50+">50+</option>
+                  </select>
+                </>
+              )}
+            </SwiperSlide>
+            <SwiperSlide>
               <label for="allergies">Allergy Concerns</label>
               <textarea
                 name="allergies"
@@ -253,22 +238,27 @@ const BookingForm = () => {
                 Include any allergy information for all guests that I will be
                 cooking for.
               </small>
-            </div>
-          </div>
-          <button
-            type="submit"
-            disabled={loading ? true : false}
-            className="submit-button"
-          >
-            Send Request
-          </button>
-          {loading && (
-            <div className="page-info">
-              <Loading />
-              <small>Sending your request. This may take a moment.</small>
-            </div>
-          )}
-        </form>
+            </SwiperSlide>
+            <SwiperSlide>
+              DISPLAY INFORMATION FOR PREVIEW
+              <button
+                type="submit"
+                disabled={loading ? true : false}
+                className="submit-button"
+                onClick={handleSubmit}
+              >
+                Submit
+              </button>
+              {loading && (
+                <div className="page-info">
+                  <Loading />
+                  <small>Sending your request. This may take a moment.</small>
+                </div>
+              )}
+            </SwiperSlide>
+          </form>
+          <SwiperButtonNext />
+        </Swiper>
       </div>
     );
   }

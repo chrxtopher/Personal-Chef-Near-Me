@@ -70,6 +70,7 @@ const BookingForm = () => {
     setFormInfo({
       ...formInfo,
       service: "Private Event",
+      mealsPerWeek: "N/A",
     });
   };
 
@@ -109,7 +110,7 @@ const BookingForm = () => {
   };
 
   const handleNextClick = () => {
-    swipeCount < 6 ? setSwipeCount(swipeCount + 1) : setSwipeCount(swipeCount);
+    swipeCount < 5 ? setSwipeCount(swipeCount + 1) : setSwipeCount(swipeCount);
   };
 
   const handleBackClick = () => {
@@ -118,11 +119,11 @@ const BookingForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("hit");
-    setLoading(true);
-    await sendBookingEmail(formInfo);
-    setLoading(false);
-    setFormSent(true);
+    console.log(formInfo);
+    // setLoading(true);
+    // await sendBookingEmail(formInfo);
+    // setLoading(false);
+    // setFormSent(true);
   };
 
   if (formSent) {
@@ -257,13 +258,10 @@ const BookingForm = () => {
                   >
                     <option value="default">Select</option>
                     <option value="10">10</option>
-                    <option value="10">15</option>
+                    <option value="15">15</option>
                     <option value="20">20</option>
-                    <option value="10">25</option>
+                    <option value="25">25</option>
                     <option value="30">30</option>
-                    <option value="40">35</option>
-                    <option value="10">40</option>
-                    <option value="50+">50+</option>
                   </select>
                 </div>
               </SwiperSlide>
@@ -282,13 +280,10 @@ const BookingForm = () => {
                     >
                       <option value="default">Select</option>
                       <option value="10">10</option>
-                      <option value="10">15</option>
+                      <option value="15">15</option>
                       <option value="20">20</option>
-                      <option value="10">25</option>
+                      <option value="25">25</option>
                       <option value="30">30</option>
-                      <option value="40">35</option>
-                      <option value="10">40</option>
-                      <option value="50+">50+</option>
                     </select>
                   </div>
                 </SwiperSlide>
@@ -305,9 +300,6 @@ const BookingForm = () => {
                 onChange={handleAllergiesChange}
               />
             </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            Double check info
             {loading && (
               <div className="page-info">
                 <Loading />
@@ -315,10 +307,10 @@ const BookingForm = () => {
               </div>
             )}
           </SwiperSlide>
-          {swipeCount < 6 && (
+          {swipeCount < 5 && (
             <SwiperButtonNext btnTitle="Next" handler={handleNextClick} />
           )}
-          {swipeCount >= 6 && (
+          {swipeCount >= 5 && (
             <button
               type="button"
               className="swiper-btn nxt-btn"

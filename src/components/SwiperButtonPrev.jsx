@@ -5,7 +5,11 @@ const SwiperButtonPrev = ({ btnTitle = "Previous" }) => {
   const swiper = useSwiper();
 
   return (
-    <button className="swiper-btn" onClick={() => swiper.slidePrev()}>
+    <button
+      className="swiper-btn"
+      type="button"
+      onClick={() => swiper.slidePrev()}
+    >
       {btnTitle}
     </button>
   );

@@ -6,7 +6,7 @@ import { sendBookingEmail } from "../utility";
 import RequestSentResponse from "./RequestSentResponse";
 import "../styles/bookingForm.css";
 import "swiper/css";
-import { Navigation, EffectCreative } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import SwiperButtonNext from "./SwiperButtonNext";
 import SwiperButtonPrev from "./SwiperButtonPrev";
 
@@ -23,6 +23,7 @@ const BookingForm = () => {
     description: "",
     allergies: "",
   };
+  const [swipeCount, setSwipeCount] = useState(0);
   const [formSent, setFormSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [service, setService] = useState("");
@@ -55,16 +56,6 @@ const BookingForm = () => {
       phone: e.target.value,
     });
   };
-
-  // const handleServiceChange = (e) => {
-  //   setService(e.target.value);
-  //   setFormInfo({
-  //     ...formInfo,
-  //     service: e.target.value,
-  //     guestCount: "N/A",
-  //     mealsPerWeek: "N/A",
-  //   });
-  // };
 
   const handleMealPrepSelection = (e) => {
     setService("Meal Prep");
@@ -117,13 +108,21 @@ const BookingForm = () => {
     });
   };
 
+  const handleNextClick = () => {
+    swipeCount < 6 ? setSwipeCount(swipeCount + 1) : setSwipeCount(swipeCount);
+  };
+
+  const handleBackClick = () => {
+    swipeCount > 0 ? setSwipeCount(swipeCount - 1) : setSwipeCount(swipeCount);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formInfo);
-    // setLoading(true);
-    // await sendBookingEmail(formInfo);
-    // setLoading(false);
-    // setFormSent(true);
+    console.log("hit");
+    setLoading(true);
+    await sendBookingEmail(formInfo);
+    setLoading(false);
+    setFormSent(true);
   };
 
   if (formSent) {
@@ -134,19 +133,10 @@ const BookingForm = () => {
         <Swiper
           grabCursor={false}
           allowTouchMove={false}
-          creativeEffect={{
-            prev: {
-              shadow: false,
-              translate: [0, 0, -400],
-            },
-            next: {
-              translate: ["100%", 0, 0],
-            },
-          }}
           speed={800}
-          modules={[Navigation, EffectCreative]}
+          modules={[Navigation]}
         >
-          <SwiperButtonPrev btnTitle="Back" />
+          <SwiperButtonPrev btnTitle="Back" handler={handleBackClick} />
           <SwiperSlide>
             <div className="input-container-vert">
               <label for="firstName">First Name</label>
@@ -277,25 +267,32 @@ const BookingForm = () => {
                   </select>
                 </div>
               </SwiperSlide>
+              <SwiperSlide>Placeholder slide</SwiperSlide>
             </>
           )) ||
             (service === "" && (
               <>
                 <SwiperSlide>
-                  <label for="mealsPerWeek">Number of Meals Per Week</label>
-                  <select
-                    id="mealsPerWeek"
-                    name="mealsPerWeek"
-                    onChange={handleMealsPerWeekChange}
-                  >
-                    <option value="default">Select</option>
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="30">30</option>
-                    <option value="40">40</option>
-                    <option value="50+">50+</option>
-                  </select>
+                  <div className="input-container-vert">
+                    <label for="mealsPerWeek">Number of Meals Per Week</label>
+                    <select
+                      id="mealsPerWeek"
+                      name="mealsPerWeek"
+                      onChange={handleMealsPerWeekChange}
+                    >
+                      <option value="default">Select</option>
+                      <option value="10">10</option>
+                      <option value="10">15</option>
+                      <option value="20">20</option>
+                      <option value="10">25</option>
+                      <option value="30">30</option>
+                      <option value="40">35</option>
+                      <option value="10">40</option>
+                      <option value="50+">50+</option>
+                    </select>
+                  </div>
                 </SwiperSlide>
+                <SwiperSlide>Placeholder slide</SwiperSlide>
               </>
             ))}
           <SwiperSlide>
@@ -318,7 +315,18 @@ const BookingForm = () => {
               </div>
             )}
           </SwiperSlide>
-          <SwiperButtonNext />
+          {swipeCount < 6 && (
+            <SwiperButtonNext btnTitle="Next" handler={handleNextClick} />
+          )}
+          {swipeCount >= 6 && (
+            <button
+              type="button"
+              className="swiper-btn nxt-btn"
+              onClick={handleSubmit}
+            >
+              Submit
+            </button>
+          )}
         </Swiper>
       </div>
     );

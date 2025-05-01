@@ -21,36 +21,34 @@ const NavBar = () => {
   };
 
   return (
-    <>
-      <nav>
-        <div className="nav-logo">
-          <img src={pcnmLogo} alt="personal chef near me logo" />
-          <h1>Personal Chef Near Me</h1>
-        </div>
-        <ul>
-          <li>
-            <Link to={"/"} onClick={handleCloseDropDown}>
-              HOME
-            </Link>
-          </li>
-          <li>
-            <Link to={"/about"} onClick={handleCloseDropDown}>
-              ABOUT
-            </Link>
-          </li>
-          <li>
-            <button className="nav-btn" onClick={handleDropDownNav}>
-              SERVICES
-            </button>
-          </li>
-        </ul>
-        <DropDownNav
-          linkObjectsArray={navLinkObjects}
-          active={open}
-          clickHandler={handleCloseDropDown}
-        />
-      </nav>
-    </>
+    <nav>
+      <div className="nav-logo">
+        <img src={pcnmLogo} alt="personal chef near me logo" />
+        <h1>Personal Chef Near Me</h1>
+      </div>
+      <ul>
+        <li>
+          <Link to={"/"} onClick={handleCloseDropDown}>
+            HOME
+          </Link>
+        </li>
+        <li>
+          <Link to={"/about"} onClick={handleCloseDropDown}>
+            ABOUT
+          </Link>
+        </li>
+        <li>
+          <button className="nav-btn" onClick={handleDropDownNav}>
+            SERVICES
+          </button>
+        </li>
+      </ul>
+      <DropDownNav
+        linkObjectsArray={navLinkObjects}
+        active={open}
+        clickHandler={handleCloseDropDown}
+      />
+    </nav>
   );
 };
 

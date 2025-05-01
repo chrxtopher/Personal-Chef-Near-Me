@@ -6,7 +6,7 @@ const SwiperButtonPrev = ({ btnTitle = "Previous" }) => {
 
   return (
     <button
-      className="swiper-btn"
+      className="swiper-btn prev-btn"
       type="button"
       onClick={() => swiper.slidePrev()}
     >

@@ -6,7 +6,7 @@ const SwiperButtonNext = ({ btnTitle = "Next" }) => {
 
   return (
     <button
-      className="swiper-btn"
+      className="swiper-btn nxt-btn"
       type="button"
       onClick={() => swiper.slideNext()}
     >

@@ -54,6 +54,19 @@ small {
   margin-top: 5px;
 }
 
+.swiper {
+  width: 65%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background-color: var(--primary-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (max-width: 480px) {
   .input-container {
     width: 100%;

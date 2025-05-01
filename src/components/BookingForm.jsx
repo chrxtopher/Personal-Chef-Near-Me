@@ -6,7 +6,7 @@ import { sendBookingEmail } from "../utility";
 import RequestSentResponse from "./RequestSentResponse";
 import "../styles/bookingForm.css";
 import "swiper/css";
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import SwiperButtonNext from "./SwiperButtonNext";
 import SwiperButtonPrev from "./SwiperButtonPrev";
 

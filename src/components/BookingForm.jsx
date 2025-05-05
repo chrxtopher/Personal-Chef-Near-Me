@@ -290,14 +290,16 @@ const BookingForm = () => {
                     name="guestCount"
                     onChange={handleGuestCountChange}
                   >
-                    <option value="default">Select</option>
                     <option value="2">2</option>
-                    <option value="3">3</option>
                     <option value="4">4</option>
-                    <option value="5">5</option>
                     <option value="6">6</option>
+                    <option value="8">8</option>
+                    <option value="10">10</option>
+                    <option value="12">12</option>
                   </select>
                 </div>
+              </SwiperSlide>
+              <SwiperSlide>
                 <div className="input-container-vert">
                   <label for="serviceDate">Date of Event</label>
                   <input
@@ -317,28 +319,10 @@ const BookingForm = () => {
                     onChange={handleCourseCountChange}
                   >
                     <option value="2">2</option>
+                    <option value="3">3</option>
                     <option value="4">4</option>
+                    <option value="5">5</option>
                     <option value="6">6</option>
-                    <option value="8">8</option>
-                    <option value="10">10</option>
-                    <option value="12">12</option>
-                  </select>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="input-container-vert">
-                  <label for="courseCount">Number of Courses</label>
-                  <select
-                    id="courseCount"
-                    name="courseCount"
-                    onChange={handleCourseCountChange}
-                  >
-                    <option value="2">2</option>
-                    <option value="4">4</option>
-                    <option value="6">6</option>
-                    <option value="8">8</option>
-                    <option value="10">10</option>
-                    <option value="12">12</option>
                   </select>
                 </div>
               </SwiperSlide>

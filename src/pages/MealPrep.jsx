@@ -89,48 +89,6 @@ const MealPrep = () => {
         <hr />
       </section>
       <HowItWorks />
-      <section className="page-info pricing">
-        <hr />
-        <h2>Pricing</h2>
-        <p>
-          A high-level description of pricing is below. Consultation fee is
-          $150, this acts as your deposit for the preparation of all meals. All
-          prices will be discussed thoroughly and agreed upon during your phone
-          appointment and consultation, as well as a preferred payment method.
-        </p>
-        <p>
-          USD is the only accepted currency. Cash or personal checks not
-          accepted.
-        </p>
-        <div>
-          <h3>Number of Meals Per Week:</h3>
-          <p>
-            Base price for meals is $13 each. There is potential for this number
-            to increase depending on proteins and complexity of each meal. I
-            will prepare meals in increments of 10, one week at a time.
-          </p>
-          <p>Minimum 10 meals per week.</p>
-        </div>
-        <div>
-          <h3>Location:</h3>
-          <p>
-            I can prepare these meals in your kitchen or mine. In home cooking
-            is $100 per hour, my kitchen is $75 an hour.
-          </p>
-          <p>
-            Long distance delivery and/or pick-up of your meals/storage
-            containers may result in an additional charge.
-          </p>
-        </div>
-        <div>
-          <h3>Storage:</h3>
-          <p>
-            The cost of storage containers will be added to the final price if
-            you cannot provide them yourself. Freezer safe containers are
-            recommended.
-          </p>
-        </div>
-      </section>
       <DuoImage asset1={mealPrep2} asset2={mealPrep3} />
     </div>
   );

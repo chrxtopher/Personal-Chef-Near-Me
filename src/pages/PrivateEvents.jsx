@@ -79,61 +79,8 @@ const PrivateEvents = () => {
           entirely. The choice is completely up to you.
         </p>
         <img src={PCNM_MENU} alt="Personal Chef Near Me base menu." />
-        <hr />
       </section>
       <HowItWorks />
-      <section className="page-info pricing">
-        <hr />
-        <h2>Pricing</h2>
-        <p>
-          A high-level description of pricing is below. Consultation fee is
-          $150, this acts as your deposit for the event. Each event has a
-          minimum $200 overall price. All prices will be discussed thoroughly
-          and agreed upon during your phone appointment and consultation, as
-          well as a preferred payment method.
-        </p>
-        <p>
-          USD is the only accepted currency. Cash or personal checks not
-          accepted.
-        </p>
-        <div>
-          <h3>Courses:</h3>
-          <p>
-            Each plate for each course will determine the cost of goods. Quality
-            of ingredients, preparation, and desired cooking method will set
-            each plate into a complexity tier:
-          </p>
-          <p>Basic: $65 - $90 per plate</p>
-          <p>Elevated: $100 - $130 per plate</p>
-          <p>Exclusive: $130 - $165 per plate</p>
-          <p>
-            For example, an exclusive steak dish would be a higher quality cut,
-            marinated for 24 hours ahead of time, smoked and reverse seared to
-            perfection, then sliced table side with specially prepared sides.
-          </p>
-        </div>
-        <div>
-          <h3>Guests:</h3>
-          <p>
-            The price of each plate will be multiplied by the total number of
-            guests.
-          </p>
-          <p>
-            My events can accomodate a minimum of 2 guests and a maximum of 6.
-            Please note that I will be working alone and any event that has more
-            than 6 guests will require an extra chef which will result in an
-            increase of $75 per hour.
-          </p>
-        </div>
-        <div>
-          <h3>Time:</h3>
-          <p>
-            The price of all plates and consultation fee will cover an event of
-            2 hours. Events longer than 2 hours will be charged an additional
-            $75 an hour.
-          </p>
-        </div>
-      </section>
       <DuoImage asset1={entree2} asset2={entree4} />
     </div>
   );

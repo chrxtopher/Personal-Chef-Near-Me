@@ -9,6 +9,7 @@ import "swiper/css";
 import { Navigation } from "swiper/modules";
 import SwiperButtonNext from "./SwiperButtonNext";
 import SwiperButtonPrev from "./SwiperButtonPrev";
+import SelectMealCount from "./SelectMealCount";
 
 const BookingForm = () => {
   const baseInfo = {
@@ -19,6 +20,7 @@ const BookingForm = () => {
     service: "",
     serviceDate: "",
     guestCount: 0,
+    courseCount: 0,
     mealsPerWeek: {
       weeklyTotal: 0,
       breakfast: {
@@ -41,7 +43,7 @@ const BookingForm = () => {
         searedPork: 0,
         medChkPasta: 0,
         brisketMac: 0,
-        parmTalapia: 0,
+        parmTilapia: 0,
         atlcSalmon: 0,
       },
     },
@@ -64,6 +66,13 @@ const BookingForm = () => {
           [e.target.name]: parseInt(e.target.value),
         },
       },
+    });
+  };
+
+  const handleCourseCountChange = (e) => {
+    setFormInfo({
+      ...formInfo,
+      courseCount: parseInt(e.target.value),
     });
   };
 
@@ -301,6 +310,40 @@ const BookingForm = () => {
               </SwiperSlide>
               <SwiperSlide>
                 <div className="input-container-vert">
+                  <label for="courseCount">Number of Courses</label>
+                  <select
+                    id="courseCount"
+                    name="courseCount"
+                    onChange={handleCourseCountChange}
+                  >
+                    <option value="2">2</option>
+                    <option value="4">4</option>
+                    <option value="6">6</option>
+                    <option value="8">8</option>
+                    <option value="10">10</option>
+                    <option value="12">12</option>
+                  </select>
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="input-container-vert">
+                  <label for="courseCount">Number of Courses</label>
+                  <select
+                    id="courseCount"
+                    name="courseCount"
+                    onChange={handleCourseCountChange}
+                  >
+                    <option value="2">2</option>
+                    <option value="4">4</option>
+                    <option value="6">6</option>
+                    <option value="8">8</option>
+                    <option value="10">10</option>
+                    <option value="12">12</option>
+                  </select>
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="input-container-vert">
                   <label for="description">Event Description</label>
                   <textarea
                     name="description"
@@ -334,226 +377,86 @@ const BookingForm = () => {
               <SwiperSlide>
                 <div className="meal-selections-container">
                   <h2>Breakfast</h2>
-                  <div className="selection-btns-container">
-                    <label for="brBurrito">Breakfast Burrito</label>
-                    <select
-                      id="brBurrito"
-                      name="brBurrito"
-                      onChange={handleBreakfastSelections}
-                    >
-                      <option value={0}>0</option>
-                      <option value={1}>1</option>
-                      <option value={2}>2</option>
-                      <option value={3}>3</option>
-                      <option value={4}>4</option>
-                      <option value={5}>5</option>
-                    </select>
-                  </div>
-                  <div className="selection-btns-container">
-                    <label for="brBowl">Breakfast Burrito Bowl</label>
-                    <select
-                      id="brBowl"
-                      name="brBowl"
-                      onChange={handleBreakfastSelections}
-                    >
-                      <option value={0}>0</option>
-                      <option value={1}>1</option>
-                      <option value={2}>2</option>
-                      <option value={3}>3</option>
-                      <option value={4}>4</option>
-                      <option value={5}>5</option>
-                    </select>
-                  </div>
-                  <div className="selection-btns-container">
-                    <label for="oatsAndFruit">Oats And Fruit</label>
-                    <select
-                      id="oatsAndFruit"
-                      name="oatsAndFruit"
-                      onChange={handleBreakfastSelections}
-                    >
-                      <option value={0}>0</option>
-                      <option value={1}>1</option>
-                      <option value={2}>2</option>
-                      <option value={3}>3</option>
-                      <option value={4}>4</option>
-                      <option value={5}>5</option>
-                    </select>
-                  </div>
+                  <SelectMealCount
+                    label="Breakfast Burrito"
+                    formID="brBurrito"
+                    handler={handleBreakfastSelections}
+                  />
+                  <SelectMealCount
+                    label="Breakfast Burrito Bowl"
+                    formID="brBowl"
+                    handler={handleBreakfastSelections}
+                  />
+                  <SelectMealCount
+                    label="Oats and Fruit"
+                    formID="oatsAndFruit"
+                    handler={handleBreakfastSelections}
+                  />
                 </div>
               </SwiperSlide>
               <SwiperSlide>
                 <div className="meal-selections-container">
                   <h2>Lunch</h2>
-                  <div className="selection-btns-container">
-                    <label for="yakiStirFry">Teriyaki Stir Fry</label>
-                    <select
-                      id="yakiStirFry"
-                      name="yakiStirFry"
-                      onChange={handleLunchSelections}
-                    >
-                      <option value={0}>0</option>
-                      <option value={1}>1</option>
-                      <option value={2}>2</option>
-                      <option value={3}>3</option>
-                      <option value={4}>4</option>
-                      <option value={5}>5</option>
-                    </select>
-                  </div>
-                  <div className="selection-btns-container">
-                    <label for="sumSalad">Summer Crunch Salad</label>
-                    <select
-                      id="sumSalad"
-                      name="sumSalad"
-                      onChange={handleLunchSelections}
-                    >
-                      <option value={0}>0</option>
-                      <option value={1}>1</option>
-                      <option value={2}>2</option>
-                      <option value={3}>3</option>
-                      <option value={4}>4</option>
-                      <option value={5}>5</option>
-                    </select>
-                  </div>
-                  <div className="selection-btns-container">
-                    <label for="bbqPork">Pulled BBQ Pork</label>
-                    <select
-                      id="bbqPork"
-                      name="bbqPork"
-                      onChange={handleLunchSelections}
-                    >
-                      <option value={0}>0</option>
-                      <option value={1}>1</option>
-                      <option value={2}>2</option>
-                      <option value={3}>3</option>
-                      <option value={4}>4</option>
-                      <option value={5}>5</option>
-                    </select>
-                  </div>
-                  <div className="selection-btns-container">
-                    <label for="sumSalad">Southwest Chicken</label>
-                    <select
-                      id="southwChk"
-                      name="southwChk"
-                      onChange={handleLunchSelections}
-                    >
-                      <option value={0}>0</option>
-                      <option value={1}>1</option>
-                      <option value={2}>2</option>
-                      <option value={3}>3</option>
-                      <option value={4}>4</option>
-                      <option value={5}>5</option>
-                    </select>
-                  </div>
-                  <div className="selection-btns-container">
-                    <label for="cajunJamb">Cajun Jambalaya</label>
-                    <select
-                      id="cajunJamb"
-                      name="cajunJamb"
-                      onChange={handleLunchSelections}
-                    >
-                      <option value={0}>0</option>
-                      <option value={1}>1</option>
-                      <option value={2}>2</option>
-                      <option value={3}>3</option>
-                      <option value={4}>4</option>
-                      <option value={5}>5</option>
-                    </select>
-                  </div>
+                  <SelectMealCount
+                    label="Teriyaki Stir Fry"
+                    formID="yakiStirFry"
+                    handler={handleLunchSelections}
+                  />
+                  <SelectMealCount
+                    label="Summer Crunch Salad"
+                    formID="sumSalad"
+                    handler={handleLunchSelections}
+                  />
+                  <SelectMealCount
+                    label="Pulled BBQ Pork"
+                    formID="bbqPork"
+                    handler={handleLunchSelections}
+                  />
+                  <SelectMealCount
+                    label="Southwest Chicken"
+                    formID="southwChk"
+                    handler={handleLunchSelections}
+                  />
+                  <SelectMealCount
+                    label="Cajun Jambalaya"
+                    formID="cajunJamb"
+                    handler={handleLunchSelections}
+                  />
                 </div>
               </SwiperSlide>
               <SwiperSlide>
                 <div className="meal-selections-container">
                   <h2>Dinner</h2>
-                  <div className="selection-btns-container">
-                    <label for="carneAsada">Carne Asada Bowl</label>
-                    <select
-                      id="carneAsada"
-                      name="carneAsada"
-                      onChange={handleDinnerSelections}
-                    >
-                      <option value={0}>0</option>
-                      <option value={1}>1</option>
-                      <option value={2}>2</option>
-                      <option value={3}>3</option>
-                      <option value={4}>4</option>
-                      <option value={5}>5</option>
-                    </select>
-                  </div>
-                  <div className="selection-btns-container">
-                    <label for="searedPork">Pan Seared Pork</label>
-                    <select
-                      id="searedPork"
-                      name="searedPork"
-                      onChange={handleDinnerSelections}
-                    >
-                      <option value={0}>0</option>
-                      <option value={1}>1</option>
-                      <option value={2}>2</option>
-                      <option value={3}>3</option>
-                      <option value={4}>4</option>
-                      <option value={5}>5</option>
-                    </select>
-                  </div>
-                  <div className="selection-btns-container">
-                    <label for="medChkPasta">Mediterranean Chicken</label>
-                    <select
-                      id="medChkPasta"
-                      name="medChkPasta"
-                      onChange={handleDinnerSelections}
-                    >
-                      <option value={0}>0</option>
-                      <option value={1}>1</option>
-                      <option value={2}>2</option>
-                      <option value={3}>3</option>
-                      <option value={4}>4</option>
-                      <option value={5}>5</option>
-                    </select>
-                  </div>
-                  <div className="selection-btns-container">
-                    <label for="brisketMac">Brisket Macaroni</label>
-                    <select
-                      id="brisketMac"
-                      name="brisketMac"
-                      onChange={handleDinnerSelections}
-                    >
-                      <option value={0}>0</option>
-                      <option value={1}>1</option>
-                      <option value={2}>2</option>
-                      <option value={3}>3</option>
-                      <option value={4}>4</option>
-                      <option value={5}>5</option>
-                    </select>
-                  </div>
-                  <div className="selection-btns-container">
-                    <label for="parmTalapia">Parmesian Talapia</label>
-                    <select
-                      id="parmTalapia"
-                      name="parmTalapia"
-                      onChange={handleDinnerSelections}
-                    >
-                      <option value={0}>0</option>
-                      <option value={1}>1</option>
-                      <option value={2}>2</option>
-                      <option value={3}>3</option>
-                      <option value={4}>4</option>
-                      <option value={5}>5</option>
-                    </select>
-                  </div>
-                  <div className="selection-btns-container">
-                    <label for="atlcSalmon">Atlantic Salmon</label>
-                    <select
-                      id="atlcSalmon"
-                      name="atlcSalmon"
-                      onChange={handleDinnerSelections}
-                    >
-                      <option value={0}>0</option>
-                      <option value={1}>1</option>
-                      <option value={2}>2</option>
-                      <option value={3}>3</option>
-                      <option value={4}>4</option>
-                      <option value={5}>5</option>
-                    </select>
-                  </div>
+                  <SelectMealCount
+                    label="Carne Asada Bowl"
+                    formID="carneAsada"
+                    handler={handleDinnerSelections}
+                  />
+                  <SelectMealCount
+                    label="Pan Seared Pork"
+                    formID="searedPork"
+                    handler={handleDinnerSelections}
+                  />
+                  <SelectMealCount
+                    label="Mediterranean Chicken"
+                    formID="medChicken"
+                    handler={handleDinnerSelections}
+                  />
+                  <SelectMealCount
+                    label="Brisket Macaroni"
+                    formID="brisketMac"
+                    handler={handleDinnerSelections}
+                  />
+                  <SelectMealCount
+                    label="Parmesan Tilapia"
+                    formID="parmTilapia"
+                    handler={handleDinnerSelections}
+                  />
+                  <SelectMealCount
+                    label="Atlantic Salmon"
+                    formID="atlcSalmon"
+                    handler={handleDinnerSelections}
+                  />
                 </div>
               </SwiperSlide>
             </>
@@ -580,233 +483,95 @@ const BookingForm = () => {
                 <SwiperSlide>
                   <div className="meal-selections-container">
                     <h2>Breakfast</h2>
-                    <div className="selection-btns-container">
-                      <label for="brBurrito">Breakfast Burrito</label>
-                      <select
-                        id="brBurrito"
-                        name="brBurrito"
-                        onChange={handleBreakfastSelections}
-                      >
-                        <option value={0}>0</option>
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
-                        <option value={4}>4</option>
-                        <option value={5}>5</option>
-                      </select>
-                    </div>
-                    <div className="selection-btns-container">
-                      <label for="brBowl">Breakfast Burrito Bowl</label>
-                      <select
-                        id="brBowl"
-                        name="brBowl"
-                        onChange={handleBreakfastSelections}
-                      >
-                        <option value={0}>0</option>
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
-                        <option value={4}>4</option>
-                        <option value={5}>5</option>
-                      </select>
-                    </div>
-                    <div className="selection-btns-container">
-                      <label for="oatsAndFruit">Oats & Fruit</label>
-                      <select
-                        id="oatsAndFruit"
-                        name="oatsAndFruit"
-                        onChange={handleBreakfastSelections}
-                      >
-                        <option value={0}>0</option>
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
-                        <option value={4}>4</option>
-                        <option value={5}>5</option>
-                      </select>
-                    </div>
+                    <SelectMealCount
+                      label="Breakfast Burrito"
+                      formID="brBurrito"
+                      handler={handleBreakfastSelections}
+                    />
+                    <SelectMealCount
+                      label="Breakfast Burrito Bowl"
+                      formID="brBowl"
+                      handler={handleBreakfastSelections}
+                    />
+                    <SelectMealCount
+                      label="Oats and Fruit"
+                      formID="oatsAndFruit"
+                      handler={handleBreakfastSelections}
+                    />
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
                   <div className="meal-selections-container">
                     <h2>Lunch</h2>
-                    <div className="selection-btns-container">
-                      <label for="yakiStirFry">Teriyaki Stir Fry</label>
-                      <select
-                        id="yakiStirFry"
-                        name="yakiStirFry"
-                        onChange={handleLunchSelections}
-                      >
-                        <option value={0}>0</option>
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
-                        <option value={4}>4</option>
-                        <option value={5}>5</option>
-                      </select>
-                    </div>
-                    <div className="selection-btns-container">
-                      <label for="sumSalad">Summer Crunch Salad</label>
-                      <select
-                        id="sumSalad"
-                        name="sumSalad"
-                        onChange={handleLunchSelections}
-                      >
-                        <option value={0}>0</option>
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
-                        <option value={4}>4</option>
-                        <option value={5}>5</option>
-                      </select>
-                    </div>
-                    <div className="selection-btns-container">
-                      <label for="bbqPork">Pulled BBQ Pork</label>
-                      <select
-                        id="bbqPork"
-                        name="bbqPork"
-                        onChange={handleLunchSelections}
-                      >
-                        <option value={0}>0</option>
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
-                        <option value={4}>4</option>
-                        <option value={5}>5</option>
-                      </select>
-                    </div>
-                    <div className="selection-btns-container">
-                      <label for="sumSalad">Southwest Chicken</label>
-                      <select
-                        id="southwChk"
-                        name="southwChk"
-                        onChange={handleLunchSelections}
-                      >
-                        <option value={0}>0</option>
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
-                        <option value={4}>4</option>
-                        <option value={5}>5</option>
-                      </select>
-                    </div>
-                    <div className="selection-btns-container">
-                      <label for="cajunJamb">Cajun Jambalaya</label>
-                      <select
-                        id="cajunJamb"
-                        name="cajunJamb"
-                        onChange={handleLunchSelections}
-                      >
-                        <option value={0}>0</option>
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
-                        <option value={4}>4</option>
-                        <option value={5}>5</option>
-                      </select>
-                    </div>
+                    <SelectMealCount
+                      label="Teriyaki Stir Fry"
+                      formID="yakiStirFry"
+                      handler={handleLunchSelections}
+                    />
+                    <SelectMealCount
+                      label="Summer Crunch Salad"
+                      formID="sumSalad"
+                      handler={handleLunchSelections}
+                    />
+                    <SelectMealCount
+                      label="Pulled BBQ Pork"
+                      formID="bbqPork"
+                      handler={handleLunchSelections}
+                    />
+                    <SelectMealCount
+                      label="Southwest Chicken"
+                      formID="southwChk"
+                      handler={handleLunchSelections}
+                    />
+                    <SelectMealCount
+                      label="Cajun Jambalaya"
+                      formID="cajunJamb"
+                      handler={handleLunchSelections}
+                    />
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
                   <div className="meal-selections-container">
                     <h2>Dinner</h2>
-                    <div className="selection-btns-container">
-                      <label for="carneAsada">Carne Asada Bowl</label>
-                      <select
-                        id="carneAsada"
-                        name="carneAsada"
-                        onChange={handleDinnerSelections}
-                      >
-                        <option value={0}>0</option>
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
-                        <option value={4}>4</option>
-                        <option value={5}>5</option>
-                      </select>
-                    </div>
-                    <div className="selection-btns-container">
-                      <label for="searedPork">Pan Seared Pork</label>
-                      <select
-                        id="searedPork"
-                        name="searedPork"
-                        onChange={handleDinnerSelections}
-                      >
-                        <option value={0}>0</option>
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
-                        <option value={4}>4</option>
-                        <option value={5}>5</option>
-                      </select>
-                    </div>
-                    <div className="selection-btns-container">
-                      <label for="medChkPasta">Mediterranean Chicken</label>
-                      <select
-                        id="medChkPasta"
-                        name="medChkPasta"
-                        onChange={handleDinnerSelections}
-                      >
-                        <option value={0}>0</option>
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
-                        <option value={4}>4</option>
-                        <option value={5}>5</option>
-                      </select>
-                    </div>
-                    <div className="selection-btns-container">
-                      <label for="brisketMac">Brisket Macaroni</label>
-                      <select
-                        id="brisketMac"
-                        name="brisketMac"
-                        onChange={handleDinnerSelections}
-                      >
-                        <option value={0}>0</option>
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
-                        <option value={4}>4</option>
-                        <option value={5}>5</option>
-                      </select>
-                    </div>
-                    <div className="selection-btns-container">
-                      <label for="parmTalapia">Parmesian Talapia</label>
-                      <select
-                        id="parmTalapia"
-                        name="parmTalapia"
-                        onChange={handleDinnerSelections}
-                      >
-                        <option value={0}>0</option>
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
-                        <option value={4}>4</option>
-                        <option value={5}>5</option>
-                      </select>
-                    </div>
-                    <div className="selection-btns-container">
-                      <label for="atlcSalmon">Atlantic Salmon</label>
-                      <select
-                        id="atlcSalmon"
-                        name="atlcSalmon"
-                        onChange={handleDinnerSelections}
-                      >
-                        <option value={0}>0</option>
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
-                        <option value={4}>4</option>
-                        <option value={5}>5</option>
-                      </select>
-                    </div>
+                    <SelectMealCount
+                      label="Carne Asada Bowl"
+                      formID="carneAsada"
+                      handler={handleDinnerSelections}
+                    />
+                    <SelectMealCount
+                      label="Pan Seared Pork"
+                      formID="searedPork"
+                      handler={handleDinnerSelections}
+                    />
+                    <SelectMealCount
+                      label="Mediterranean Chicken"
+                      formID="medChicken"
+                      handler={handleDinnerSelections}
+                    />
+                    <SelectMealCount
+                      label="Brisket Macaroni"
+                      formID="brisketMac"
+                      handler={handleDinnerSelections}
+                    />
+                    <SelectMealCount
+                      label="Parmesan Tilapia"
+                      formID="parmTilapia"
+                      handler={handleDinnerSelections}
+                    />
+                    <SelectMealCount
+                      label="Atlantic Salmon"
+                      formID="atlcSalmon"
+                      handler={handleDinnerSelections}
+                    />
                   </div>
                 </SwiperSlide>
               </>
             ))}
           <SwiperSlide>
             <div className="input-container-vert">
-              <label for="allergies">Allergy Concerns</label>
+              <label for="allergies">
+                Allergies and/or Dietary Restrictions
+              </label>
               <textarea
                 name="allergies"
                 rows="8"
@@ -824,7 +589,7 @@ const BookingForm = () => {
           {swipeCount < 7 && (
             <SwiperButtonNext btnTitle="Next" handler={handleNextClick} />
           )}
-          {swipeCount === 7 && (
+          {swipeCount >= 7 && (
             <button
               type="button"
               className="swiper-btn nxt-btn"

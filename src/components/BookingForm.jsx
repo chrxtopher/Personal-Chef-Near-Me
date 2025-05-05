@@ -194,11 +194,10 @@ const BookingForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formInfo);
-    // setLoading(true);
-    // await sendBookingEmail(formInfo);
-    // setLoading(false);
-    // setFormSent(true);
+    setLoading(true);
+    await sendBookingEmail(formInfo);
+    setLoading(false);
+    setFormSent(true);
   };
 
   if (formSent) {
@@ -349,12 +348,12 @@ const BookingForm = () => {
                     name="mealsPerWeek"
                     onChange={handleMealsPerWeekChange}
                   >
-                    <option value="default">Select</option>
                     <option value="10">10</option>
                     <option value="15">15</option>
                     <option value="20">20</option>
                     <option value="25">25</option>
                     <option value="30">30</option>
+                    <option value="35">35</option>
                   </select>
                 </div>
               </SwiperSlide>

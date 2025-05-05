@@ -1,6 +1,8 @@
 import React from "react";
 import PCNM_LOGO from "../assets/photos/PCNM_LOGO.png";
 import { FaSquareFacebook } from "react-icons/fa6";
+import { AiFillTikTok } from "react-icons/ai";
+import { FaSquareInstagram } from "react-icons/fa6";
 import "../styles/footer.css";
 
 const Footer = () => {
@@ -17,6 +19,22 @@ const Footer = () => {
           rel="noreferrer"
         >
           <FaSquareFacebook />
+        </a>
+        <a
+          href="https://www.tiktok.com/@personalchefnearme?_t=ZT-8w7772PjQ6g&_r=1"
+          className="icon-link"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <AiFillTikTok />
+        </a>
+        <a
+          href="https://www.instagram.com/personalchefnearme/"
+          className="icon-link"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <FaSquareInstagram />
         </a>
       </div>
     </footer>

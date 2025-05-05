@@ -1,9 +1,15 @@
 import React from "react";
 import { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import Loading from "./Loading";
 import { sendBookingEmail } from "../utility";
 import RequestSentResponse from "./RequestSentResponse";
 import "../styles/bookingForm.css";
+import "swiper/css";
+import { Navigation } from "swiper/modules";
+import SwiperButtonNext from "./SwiperButtonNext";
+import SwiperButtonPrev from "./SwiperButtonPrev";
+import SelectMealCount from "./SelectMealCount";
 
 const BookingForm = () => {
   const baseInfo = {
@@ -11,17 +17,90 @@ const BookingForm = () => {
     firstName: "",
     lastName: "",
     phone: "",
-    service: "Private Event",
+    service: "",
     serviceDate: "",
-    guestCount: "default",
-    mealsPerWeek: "default",
+    guestCount: 0,
+    courseCount: 0,
+    mealsPerWeek: {
+      weeklyTotal: 0,
+      breakfast: {
+        breakfastCount: 0,
+        brBurrito: 0,
+        brBowl: 0,
+        oatsAndFruit: 0,
+      },
+      lunch: {
+        lunchCount: 0,
+        yakiStirFry: 0,
+        sumSalad: 0,
+        bbqPork: 0,
+        southwChk: 0,
+        cajunJamb: 0,
+      },
+      dinner: {
+        dinnerCount: 0,
+        carneAsada: 0,
+        searedPork: 0,
+        medChkPasta: 0,
+        brisketMac: 0,
+        parmTilapia: 0,
+        atlcSalmon: 0,
+      },
+    },
     description: "",
     allergies: "",
   };
+  const [swipeCount, setSwipeCount] = useState(0);
   const [formSent, setFormSent] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [service, setService] = useState("Private Event");
+  const [service, setService] = useState("");
   const [formInfo, setFormInfo] = useState(baseInfo);
+
+  const handleBreakfastSelections = (e) => {
+    setFormInfo({
+      ...formInfo,
+      mealsPerWeek: {
+        ...formInfo.mealsPerWeek,
+        breakfast: {
+          ...formInfo.mealsPerWeek.breakfast,
+          [e.target.name]: parseInt(e.target.value),
+        },
+      },
+    });
+  };
+
+  const handleCourseCountChange = (e) => {
+    setFormInfo({
+      ...formInfo,
+      courseCount: parseInt(e.target.value),
+    });
+  };
+
+  const handleLunchSelections = (e) => {
+    setFormInfo({
+      ...formInfo,
+      mealsPerWeek: {
+        ...formInfo.mealsPerWeek,
+        lunch: {
+          ...formInfo.mealsPerWeek.lunch,
+          [e.target.name]: parseInt(e.target.value),
+        },
+      },
+    });
+  };
+
+  const handleDinnerSelections = (e) => {
+    setFormInfo({
+      ...formInfo,
+      mealsPerWeek: {
+        ...formInfo.mealsPerWeek,
+        dinner: {
+          ...formInfo.mealsPerWeek.dinner,
+          [e.target.name]: parseInt(e.target.value),
+        },
+      },
+    });
+  };
 
   const handleFirstNameChange = (e) => {
     setFormInfo({
@@ -51,13 +130,19 @@ const BookingForm = () => {
     });
   };
 
-  const handleServiceChange = (e) => {
-    setService(e.target.value);
+  const handleMealPrepSelection = (e) => {
+    setService("Meal Prep");
     setFormInfo({
       ...formInfo,
-      service: e.target.value,
-      guestCount: "N/A",
-      mealsPerWeek: "N/A",
+      service: "Meal Prep",
+    });
+  };
+
+  const handlePrivateEventSelection = (e) => {
+    setService("Private Event");
+    setFormInfo({
+      ...formInfo,
+      service: "Private Event",
     });
   };
 
@@ -71,14 +156,17 @@ const BookingForm = () => {
   const handleGuestCountChange = (e) => {
     setFormInfo({
       ...formInfo,
-      guestCount: e.target.value,
+      guestCount: parseInt(e.target.value),
     });
   };
 
   const handleMealsPerWeekChange = (e) => {
     setFormInfo({
       ...formInfo,
-      mealsPerWeek: e.target.value,
+      mealsPerWeek: {
+        ...formInfo.mealsPerWeek,
+        weeklyTotal: parseInt(e.target.value),
+      },
     });
   };
 
@@ -96,6 +184,14 @@ const BookingForm = () => {
     });
   };
 
+  const handleNextClick = () => {
+    swipeCount < 7 ? setSwipeCount(swipeCount + 1) : setSwipeCount(7);
+  };
+
+  const handleBackClick = () => {
+    swipeCount > 0 ? setSwipeCount(swipeCount - 1) : setSwipeCount(0);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -108,10 +204,16 @@ const BookingForm = () => {
     return <RequestSentResponse />;
   } else {
     return (
-      <div className="form-container">
-        <form className="booking-form" onSubmit={handleSubmit}>
-          <div className="input-container">
-            <div className="input-section">
+      <div>
+        <Swiper
+          grabCursor={false}
+          allowTouchMove={false}
+          speed={800}
+          modules={[Navigation]}
+        >
+          <SwiperButtonPrev btnTitle="Back" handler={handleBackClick} />
+          <SwiperSlide>
+            <div className="input-container-vert">
               <label for="firstName">First Name</label>
               <input
                 type="text"
@@ -119,10 +221,9 @@ const BookingForm = () => {
                 name="firstName"
                 placeholder="John"
                 onChange={handleFirstNameChange}
-                required
               />
             </div>
-            <div className="input-section">
+            <div className="input-container-vert">
               <label for="lastName">Last Name</label>
               <input
                 type="text"
@@ -130,12 +231,11 @@ const BookingForm = () => {
                 name="lastName"
                 placeholder="Smith"
                 onChange={handleLastNameChange}
-                required
               />
             </div>
-          </div>
-          <div className="input-container">
-            <div className="input-section">
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="input-container-vert">
               <label for="email">Email</label>
               <input
                 type="email"
@@ -143,10 +243,9 @@ const BookingForm = () => {
                 name="email"
                 placeholder="john.smith@example.com"
                 onChange={handleEmailChange}
-                required
               />
             </div>
-            <div className="input-section">
+            <div className="input-container-vert">
               <label for="phone">Phone Number</label>
               <input
                 type="tel"
@@ -155,120 +254,334 @@ const BookingForm = () => {
                 placeholder="123-456-7890"
                 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                 onChange={handlePhoneChange}
-                required
               />
-              <small>Format: 123-456-7890</small>
             </div>
-          </div>
-          <div className="input-container">
-            <div className="input-section">
-              <label for="service">Requested Service</label>
-              <select
-                id="service"
-                name="service"
-                onChange={handleServiceChange}
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="selection-btns-container">
+              <button
+                type="button"
+                className={`selection-btn ${
+                  service === "Meal Prep" ? "active-btn" : ""
+                }`}
+                onClick={handleMealPrepSelection}
               >
-                <option value="Private Event">Private Event</option>
-                <option value="Meal Prep">Meal Prep</option>
-              </select>
+                Meal Prep
+              </button>
+              <button
+                type="button"
+                className={`selection-btn ${
+                  service === "Private Event" ? "active-btn" : ""
+                }`}
+                onClick={handlePrivateEventSelection}
+              >
+                Private Event
+              </button>
             </div>
-            <div className="input-section">
-              <label for="serviceDate">Date of Service</label>
-              <input
-                type="date"
-                id="serviceDate"
-                name="serviceDate"
-                onChange={handleServiceDateChange}
-                required
-              />
-            </div>
-          </div>
-
+          </SwiperSlide>
           {service === "Private Event" && (
-            <div className="input-container">
-              <div className="input-section">
-                <label for="guestCount">Guest Count</label>
-                <select
-                  id="guestCount"
-                  name="guestCount"
-                  onChange={handleGuestCountChange}
-                >
-                  <option value="default">Select</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                </select>
-              </div>
-            </div>
+            <>
+              <SwiperSlide>
+                <div className="input-container-vert">
+                  <label for="guestCount">Guest Count</label>
+                  <select
+                    id="guestCount"
+                    name="guestCount"
+                    onChange={handleGuestCountChange}
+                  >
+                    <option value="2">2</option>
+                    <option value="4">4</option>
+                    <option value="6">6</option>
+                    <option value="8">8</option>
+                    <option value="10">10</option>
+                    <option value="12">12</option>
+                  </select>
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="input-container-vert">
+                  <label for="serviceDate">Date of Event</label>
+                  <input
+                    type="date"
+                    id="serviceDate"
+                    name="serviceDate"
+                    onChange={handleServiceDateChange}
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="input-container-vert">
+                  <label for="courseCount">Number of Courses</label>
+                  <select
+                    id="courseCount"
+                    name="courseCount"
+                    onChange={handleCourseCountChange}
+                  >
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                  </select>
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="input-container-vert">
+                  <label for="description">Event Description</label>
+                  <textarea
+                    name="description"
+                    rows="8"
+                    cols="50"
+                    onChange={handleDescriptionChange}
+                  />
+                </div>
+              </SwiperSlide>
+            </>
           )}
-          {service === "Meal Prep" && (
-            <div className="input-container">
-              <div className="input-section">
-                <label for="mealsPerWeek">Number of Meals Per Week</label>
-                <select
-                  id="mealsPerWeek"
-                  name="mealsPerWeek"
-                  onChange={handleMealsPerWeekChange}
-                >
-                  <option value="default">Select</option>
-                  <option value="10">10</option>
-                  <option value="20">20</option>
-                  <option value="30">30</option>
-                  <option value="40">40</option>
-                  <option value="50+">50+</option>
-                </select>
-              </div>
-            </div>
-          )}
-          <div className="input-container">
-            <div className="input-section large-text">
-              <label for="description">Event & Food Description</label>
-              <textarea
-                name="description"
-                rows="10"
-                cols="50"
-                onChange={handleDescriptionChange}
-                required
-              />
-              <small>
-                Basis of expectations for menu and services. Please provide some
-                brief information on the type of event (if applicable),
-                preferred ingredients for plates/meals (ie. proteins and
-                veggies), or any information that will help us curate the
-                perfect experience.
-              </small>
-            </div>
-            <div className="input-section large-text">
-              <label for="allergies">Allergy Concerns</label>
+          {(service === "Meal Prep" && (
+            <>
+              <SwiperSlide>
+                <div className="input-container-vert">
+                  <label for="mealsPerWeek">Number of Meals Per Week</label>
+                  <select
+                    id="mealsPerWeek"
+                    name="mealsPerWeek"
+                    onChange={handleMealsPerWeekChange}
+                  >
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                    <option value="25">25</option>
+                    <option value="30">30</option>
+                    <option value="35">35</option>
+                  </select>
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="meal-selections-container">
+                  <h2>Breakfast</h2>
+                  <SelectMealCount
+                    label="Breakfast Burrito"
+                    formID="brBurrito"
+                    handler={handleBreakfastSelections}
+                  />
+                  <SelectMealCount
+                    label="Breakfast Burrito Bowl"
+                    formID="brBowl"
+                    handler={handleBreakfastSelections}
+                  />
+                  <SelectMealCount
+                    label="Oats and Fruit"
+                    formID="oatsAndFruit"
+                    handler={handleBreakfastSelections}
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="meal-selections-container">
+                  <h2>Lunch</h2>
+                  <SelectMealCount
+                    label="Teriyaki Stir Fry"
+                    formID="yakiStirFry"
+                    handler={handleLunchSelections}
+                  />
+                  <SelectMealCount
+                    label="Summer Crunch Salad"
+                    formID="sumSalad"
+                    handler={handleLunchSelections}
+                  />
+                  <SelectMealCount
+                    label="Pulled BBQ Pork"
+                    formID="bbqPork"
+                    handler={handleLunchSelections}
+                  />
+                  <SelectMealCount
+                    label="Southwest Chicken"
+                    formID="southwChk"
+                    handler={handleLunchSelections}
+                  />
+                  <SelectMealCount
+                    label="Cajun Jambalaya"
+                    formID="cajunJamb"
+                    handler={handleLunchSelections}
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="meal-selections-container">
+                  <h2>Dinner</h2>
+                  <SelectMealCount
+                    label="Carne Asada Bowl"
+                    formID="carneAsada"
+                    handler={handleDinnerSelections}
+                  />
+                  <SelectMealCount
+                    label="Pan Seared Pork"
+                    formID="searedPork"
+                    handler={handleDinnerSelections}
+                  />
+                  <SelectMealCount
+                    label="Mediterranean Chicken"
+                    formID="medChicken"
+                    handler={handleDinnerSelections}
+                  />
+                  <SelectMealCount
+                    label="Brisket Macaroni"
+                    formID="brisketMac"
+                    handler={handleDinnerSelections}
+                  />
+                  <SelectMealCount
+                    label="Parmesan Tilapia"
+                    formID="parmTilapia"
+                    handler={handleDinnerSelections}
+                  />
+                  <SelectMealCount
+                    label="Atlantic Salmon"
+                    formID="atlcSalmon"
+                    handler={handleDinnerSelections}
+                  />
+                </div>
+              </SwiperSlide>
+            </>
+          )) ||
+            (service === "" && (
+              <>
+                <SwiperSlide>
+                  <div className="input-container-vert">
+                    <label for="mealsPerWeek">Number of Meals Per Week</label>
+                    <select
+                      id="mealsPerWeek"
+                      name="mealsPerWeek"
+                      onChange={handleMealsPerWeekChange}
+                    >
+                      <option value="default">Select</option>
+                      <option value="10">10</option>
+                      <option value="15">15</option>
+                      <option value="20">20</option>
+                      <option value="25">25</option>
+                      <option value="30">30</option>
+                    </select>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="meal-selections-container">
+                    <h2>Breakfast</h2>
+                    <SelectMealCount
+                      label="Breakfast Burrito"
+                      formID="brBurrito"
+                      handler={handleBreakfastSelections}
+                    />
+                    <SelectMealCount
+                      label="Breakfast Burrito Bowl"
+                      formID="brBowl"
+                      handler={handleBreakfastSelections}
+                    />
+                    <SelectMealCount
+                      label="Oats and Fruit"
+                      formID="oatsAndFruit"
+                      handler={handleBreakfastSelections}
+                    />
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="meal-selections-container">
+                    <h2>Lunch</h2>
+                    <SelectMealCount
+                      label="Teriyaki Stir Fry"
+                      formID="yakiStirFry"
+                      handler={handleLunchSelections}
+                    />
+                    <SelectMealCount
+                      label="Summer Crunch Salad"
+                      formID="sumSalad"
+                      handler={handleLunchSelections}
+                    />
+                    <SelectMealCount
+                      label="Pulled BBQ Pork"
+                      formID="bbqPork"
+                      handler={handleLunchSelections}
+                    />
+                    <SelectMealCount
+                      label="Southwest Chicken"
+                      formID="southwChk"
+                      handler={handleLunchSelections}
+                    />
+                    <SelectMealCount
+                      label="Cajun Jambalaya"
+                      formID="cajunJamb"
+                      handler={handleLunchSelections}
+                    />
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="meal-selections-container">
+                    <h2>Dinner</h2>
+                    <SelectMealCount
+                      label="Carne Asada Bowl"
+                      formID="carneAsada"
+                      handler={handleDinnerSelections}
+                    />
+                    <SelectMealCount
+                      label="Pan Seared Pork"
+                      formID="searedPork"
+                      handler={handleDinnerSelections}
+                    />
+                    <SelectMealCount
+                      label="Mediterranean Chicken"
+                      formID="medChicken"
+                      handler={handleDinnerSelections}
+                    />
+                    <SelectMealCount
+                      label="Brisket Macaroni"
+                      formID="brisketMac"
+                      handler={handleDinnerSelections}
+                    />
+                    <SelectMealCount
+                      label="Parmesan Tilapia"
+                      formID="parmTilapia"
+                      handler={handleDinnerSelections}
+                    />
+                    <SelectMealCount
+                      label="Atlantic Salmon"
+                      formID="atlcSalmon"
+                      handler={handleDinnerSelections}
+                    />
+                  </div>
+                </SwiperSlide>
+              </>
+            ))}
+          <SwiperSlide>
+            <div className="input-container-vert">
+              <label for="allergies">
+                Allergies and/or Dietary Restrictions
+              </label>
               <textarea
                 name="allergies"
-                rows="10"
+                rows="8"
                 cols="50"
                 onChange={handleAllergiesChange}
-                required
               />
-              <small>
-                Include any allergy information for all guests that I will be
-                cooking for.
-              </small>
             </div>
-          </div>
-          <button
-            type="submit"
-            disabled={loading ? true : false}
-            className="submit-button"
-          >
-            Send Request
-          </button>
-          {loading && (
-            <div className="page-info">
-              <Loading />
-              <small>Sending your request. This may take a moment.</small>
-            </div>
+            {loading && (
+              <div className="page-info">
+                <Loading />
+                <small>Sending your request. This may take a moment.</small>
+              </div>
+            )}
+          </SwiperSlide>
+          {swipeCount < 7 && (
+            <SwiperButtonNext btnTitle="Next" handler={handleNextClick} />
           )}
-        </form>
+          {swipeCount >= 7 && (
+            <button
+              type="button"
+              className="swiper-btn nxt-btn"
+              onClick={handleSubmit}
+            >
+              Submit
+            </button>
+          )}
+        </Swiper>
       </div>
     );
   }

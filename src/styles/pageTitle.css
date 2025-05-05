@@ -52,7 +52,7 @@
   margin: 10px 0px;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .title-content hr {
     min-width: 90vw;
   }

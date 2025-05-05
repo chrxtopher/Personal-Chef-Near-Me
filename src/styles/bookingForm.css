@@ -1,61 +1,143 @@
-.booking-form {
+.swiper {
+  width: 65%;
+  max-width: 850px;
+}
+
+.swiper-slide {
+  font-size: 18px;
+  background-color: var(--primary-light);
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content: center;
-  gap: 30px;
-}
-
-.booking-form div {
-  display: flex;
-}
-
-.input-container {
   margin: auto;
-  justify-content: center;
+}
+
+.input-container-vert {
   width: 50%;
-  gap: 30px;
-}
-
-.input-section {
   display: flex;
-  width: 40%;
   flex-direction: column;
+  margin: 25px auto;
+  gap: 5px;
 }
 
-textarea {
+.input-container-vert input,
+.input-container-vert select {
+  height: 50px;
+  font-size: 1.2rem;
+}
+
+.input-container-vert textarea,
+.input-container-vert input,
+.input-container-vert select {
+  padding: 5px;
+  border: 2px solid var(--primary-accent);
+  border-radius: 4px;
+}
+
+.input-container-vert textarea {
+  font-size: 1.1rem;
   resize: none;
 }
 
-.large-text {
-  width: 45%;
+.selection-btns-container {
+  display: flex;
+  justify-content: space-around;
 }
 
-input,
-select {
-  height: 30px;
-  background-color: white;
-  color: black;
+.meal-selections-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 300px;
+  margin: auto;
 }
 
-input,
-select,
-textarea {
-  margin-top: 5px;
+.meal-selections-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.meal-selections-container .selection-btns-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.meal-selections-container .selection-btns-container select {
+  text-align: center;
+  width: 50px;
+  height: 35px;
   border: 2px solid var(--primary-accent);
-  border-radius: 5px;
-  padding: 3px;
+  border-radius: 4px;
   font-size: 1rem;
 }
 
-label,
-small {
-  margin-left: 3px;
-  margin-top: 5px;
+.swiper-btn {
+  height: 45px;
+  padding: 0 10px;
+  font-size: 1.2rem;
+  border: 1px solid black;
+  background-color: var(--primary-light);
+  border-radius: 4px;
+  margin: 0 auto;
 }
 
-@media (max-width: 480px) {
+.nxt-btn {
+  float: inline-end;
+  margin-right: 125px;
+}
+
+.prev-btn {
+  float: inline-start;
+  margin-left: 125px;
+}
+
+.swiper-btn:hover {
+  cursor: pointer;
+  background-color: var(--secondary-accent);
+}
+
+.swiper-btn:active {
+  background-color: var(--primary-accent);
+}
+
+.selection-btn {
+  height: 70px;
+  width: 40%;
+  min-width: 150px;
+  font-size: 1.5rem;
+  background-color: white;
+  border: 2px solid var(--secondary-accent);
+  border-radius: 4px;
+}
+
+.active-btn {
+  border: 2px solid black;
+  background-color: var(--primary-accent);
+}
+
+.selection-btn:hover {
+  cursor: pointer;
+  background-color: var(--primary-accent);
+}
+
+@media (max-width: 600px) {
   .input-container {
     width: 100%;
+  }
+
+  .swiper {
+    width: 100%;
+  }
+
+  .input-container-vert {
+    width: 85%;
+  }
+
+  .selection-btn {
+    width: 35%;
+    min-width: 0px;
   }
 }

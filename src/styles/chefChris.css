@@ -20,7 +20,7 @@
   padding: 5px;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .chef-chris {
     flex-direction: column;
     gap: 15px;

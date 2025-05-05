@@ -9,8 +9,8 @@ const SwiperButtonPrev = ({ btnTitle = "Previous", handler = () => {} }) => {
       className="swiper-btn prev-btn"
       type="button"
       onClick={() => {
-        swiper.slidePrev();
         handler();
+        swiper.slidePrev();
       }}
     >
       {btnTitle}

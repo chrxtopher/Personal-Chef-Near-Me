@@ -165,7 +165,7 @@ section {
   cursor: not-allowed;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .page-info {
     width: 100vw;
     padding: 0 35px;

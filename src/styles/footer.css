@@ -28,7 +28,7 @@ footer img {
   font-size: 3rem;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   footer {
     padding: 50px 25px;
   }

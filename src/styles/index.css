@@ -199,3 +199,13 @@ section {
     padding: 0;
   }
 }
+
+@media (max-width: 1000px) {
+  .page-info {
+    padding: 15px;
+  }
+
+  .how-it-works {
+    padding: 20px;
+  }
+}

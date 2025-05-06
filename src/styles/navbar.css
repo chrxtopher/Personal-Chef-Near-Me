@@ -37,6 +37,8 @@ nav {
   background-color: var(--primary-light);
   cursor: pointer;
   padding: 5px;
+  font-size: 0.9rem;
+  color: var(--primary-dark);
 }
 
 .nav-btn:hover {
@@ -74,12 +76,15 @@ a:hover {
   color: var(--primary-mid);
 }
 
+@media (max-width: 750px) {
+  .nav-logo h1 {
+    display: none;
+  }
+}
+
 @media (max-width: 600px) {
   nav {
     padding: 5px 15px;
-  }
-  .nav-logo h1 {
-    display: none;
   }
 
   li {

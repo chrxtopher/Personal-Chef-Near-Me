@@ -32,6 +32,8 @@
   padding: 5px;
   border: 2px solid var(--primary-accent);
   border-radius: 4px;
+  color: black;
+  background-color: white;
 }
 
 .input-container-vert textarea {
@@ -112,6 +114,7 @@
   background-color: white;
   border: 2px solid var(--secondary-accent);
   border-radius: 4px;
+  color: black;
 }
 
 .active-btn {

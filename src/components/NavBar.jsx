@@ -24,7 +24,9 @@ const NavBar = () => {
     <nav>
       <div className="nav-logo">
         <img src={pcnmLogo} alt="personal chef near me logo" />
-        <h1>Personal Chef Near Me</h1>
+        <Link to={"/"}>
+          <h1>Personal Chef Near Me</h1>
+        </Link>
       </div>
       <ul>
         <li>
@@ -34,7 +36,7 @@ const NavBar = () => {
         </li>
         <li>
           <Link to={"/about"} onClick={handleCloseDropDown}>
-            ABOUT
+            CHEF
           </Link>
         </li>
         <li>

@@ -36,6 +36,11 @@
   background-color: white;
 }
 
+.meal-selections-container select {
+  background-color: white;
+  color: black;
+}
+
 .input-container-vert textarea {
   font-size: 1.1rem;
   resize: none;

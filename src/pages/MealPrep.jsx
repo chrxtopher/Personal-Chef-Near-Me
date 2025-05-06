@@ -6,6 +6,8 @@ import mealPrep1 from "../assets/photos/mealPrep_1.png";
 import mealPrep2 from "../assets/photos/mealPrep_2.png";
 import mealPrep3 from "../assets/photos/mealPrep_3.png";
 import mealPrep4 from "../assets/photos/mealPrep_4.png";
+import mealPrep6 from "../assets/photos/mealPrep_6.jpg";
+import mealPrep7 from "../assets/photos/mealPrep_7.jpg";
 import MEAL_PREP_MENU from "../assets/photos/MEAL_PREP_MENU.png";
 import NavButton from "../components/NavButton";
 
@@ -13,7 +15,7 @@ const MealPrep = () => {
   return (
     <div className="page">
       <PageTitleImage
-        asset={mealPrep4}
+        asset={mealPrep7}
         altText={"meal prep"}
         title={"Meal Prep"}
         subTitle={
@@ -38,7 +40,7 @@ const MealPrep = () => {
         </p>
         <NavButton route={"/booking"} title={"Get Started"} />
       </section>
-      <DuoImage asset1={mealPrep1} asset2={mealPrep4} />
+      <DuoImage asset1={mealPrep1} asset2={mealPrep6} />
       <section className="page-info">
         <h2>Components of Your Experience</h2>
         <p>
@@ -89,7 +91,7 @@ const MealPrep = () => {
         <hr />
       </section>
       <HowItWorks />
-      <DuoImage asset1={mealPrep2} asset2={mealPrep3} />
+      <DuoImage asset1={mealPrep2} asset2={mealPrep4} />
     </div>
   );
 };

@@ -9,6 +9,8 @@ import entree1 from "../assets/photos/entree_1.png";
 import entree2 from "../assets/photos/entree_2.jpeg";
 import entree3 from "../assets/photos/entree_3.jpeg";
 import entree4 from "../assets/photos/entree_4.jpeg";
+import mealPrep5 from "../assets/photos/mealPrep_5.jpg";
+import mealPrep7 from "../assets/photos/mealPrep_7.jpg";
 
 const Home = () => {
   return (
@@ -48,8 +50,8 @@ const Home = () => {
         </p>
         <NavButton route={"/mealprep"} title={"Learn More About Meal Prep"} />
       </section>
-      <DuoImage asset1={entree1} asset2={entree3} />
-      <DuoImage asset1={entree2} asset2={entree4} />
+      <DuoImage asset1={entree1} asset2={mealPrep7} />
+      <DuoImage asset1={mealPrep5} asset2={entree4} />
       <HowItWorks />
       <section className="page-info">
         <hr />

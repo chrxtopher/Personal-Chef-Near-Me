@@ -6,6 +6,8 @@ import entree1 from "../assets/photos/entree_1.png";
 import entree2 from "../assets/photos/entree_2.jpeg";
 import entree3 from "../assets/photos/entree_3.jpeg";
 import entree4 from "../assets/photos/entree_4.jpeg";
+import entree5 from "../assets/photos/entree_5.jpg";
+import entree6 from "../assets/photos/entree_6.jpg";
 import PCNM_MENU from "../assets/photos/PCNM_Menu.png";
 import NavButton from "../components/NavButton";
 
@@ -13,7 +15,7 @@ const PrivateEvents = () => {
   return (
     <div className="page">
       <PageTitleImage
-        asset={entree1}
+        asset={entree5}
         altText={"entree"}
         title={"Private Events"}
         subTitle={"Date Nights, Family Gatherings, And Business Meetings"}
@@ -34,7 +36,7 @@ const PrivateEvents = () => {
         </p>
         <NavButton route={"/booking"} title={"Book A Dining Event"} />
       </section>
-      <DuoImage asset1={entree1} asset2={entree3} />
+      <DuoImage asset1={entree1} asset2={entree6} />
       <section className="page-info">
         <h2>Components of Your Experience</h2>
         <p>
@@ -81,7 +83,7 @@ const PrivateEvents = () => {
         <img src={PCNM_MENU} alt="Personal Chef Near Me base menu." />
       </section>
       <HowItWorks />
-      <DuoImage asset1={entree2} asset2={entree4} />
+      <DuoImage asset1={entree2} asset2={entree3} />
     </div>
   );
 };

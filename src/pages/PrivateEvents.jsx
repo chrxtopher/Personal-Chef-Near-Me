@@ -36,7 +36,7 @@ const PrivateEvents = () => {
         </p>
         <NavButton route={"/booking"} title={"Book A Dining Event"} />
       </section>
-      <DuoImage asset1={entree1} asset2={entree6} />
+      <DuoImage asset1={entree2} asset2={entree6} />
       <section className="page-info">
         <h2>Components of Your Experience</h2>
         <p>
@@ -83,7 +83,7 @@ const PrivateEvents = () => {
         <img src={PCNM_MENU} alt="Personal Chef Near Me base menu." />
       </section>
       <HowItWorks />
-      <DuoImage asset1={entree2} asset2={entree3} />
+      <DuoImage asset1={entree1} asset2={entree3} />
     </div>
   );
 };

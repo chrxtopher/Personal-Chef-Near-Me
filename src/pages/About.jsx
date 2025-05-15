@@ -1,13 +1,12 @@
 import React from "react";
 import PageTitleImage from "../components/PageTitleImage";
 import ChefChris from "../components/ChefChris";
-import placeholderImg from "../assets/photos/img-placeholder.png";
-
+import mealPrep5 from "../assets/photos/mealPrep_5.jpg";
 const About = () => {
   return (
     <div className="page">
       <PageTitleImage
-        asset={placeholderImg}
+        asset={mealPrep5}
         altText={"place holder image"}
         title={"Christopher Smith"}
         subTitle={""}
